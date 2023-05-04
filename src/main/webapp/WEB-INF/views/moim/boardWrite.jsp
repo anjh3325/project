@@ -6,27 +6,78 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>게시판 만드는 </title>
+<title>게시판</title>
+<style>
+<style>
 
+	body {
+		font-family: 'Helvetica Neue', sans-serif;
+		font-size: 20px;
+	}
+	
+	form {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		padding: 100px;
+		background-color: #f0f0f0;
+		
+	}
+	
+	label {
+		font-weight:bold;
+	}
+	
+	input, select {
+		border-radius: 5px;
+		border: none;
+		padding: 8px 12px;
+		margin: 5px;
+		background-color: #ffffff;
+		box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
+	}
+	
+	input[type="date"], input[type="time"] {
+		width: auto;
+	}
+	
+	button {
+		padding: 8px 12px;
+		background-color: #007bff;
+		color: #ffffff;
+		border: none;
+		border-radius: 5px;
+		
+		cursor: pointer;
+		transition: background-color 0.3s ease;
+	}
+. box {
+
+}
+
+	}
+</style>
 </head>
 <body>
-	<div class="root">
+
+
+
+	<div align="center">
+	
 	
 		<form action="/moim/boardWrite-task" method="post" class="moim-form"
 			autocomplete="off">
 			<div class="block">
-				<label>만들고자 하는 모임의 <span style="color: orangered;">이름</span>
-					
-				</label>
+				<span>모임 이름</span>
+				
 				<div class="block">
-					<input type="text" name="event" style="flex: 1" />
+					<input type="text" name="event" />
 				</div>
-			</div>
 			<div class="block">
-				<label>만들고자 하는 모임의 <span style="color: orangered;">목적, 최대 참가 인원 수</span>
+				<label>모임의 <span>장소, 참가 인원 수</span>
 				</label>
 				<div class="block-row" style="justify-content: center">
-					<div class="block-row" style="flex: 1">
+				
 						<select name="type" style="flex: 1; text-align: center">
 						
 						</select>
@@ -48,7 +99,7 @@
 				</div>
 			</div>
 			<div class="block">
-				<label>만나고자하는 <span style="color: orangered;">날짜</span> </label>
+				<label>만나고자하는 <span>날짜</span> </label>
 		
 				<div class="block-row" style="flex: 1">
 					<div class="block" style="flex: 2">
@@ -62,16 +113,22 @@
 					
 				</div>
 			</div>
-			<div class="block">
+			<div class="block" >
 				<label>내용</label>
-				<div class="block" style="min-height: 120px">
-					<textarea style="resize: none; flex: 1" name="description"></textarea>
+				<input type ="text" />
 				</div>
 			</div>
 			<div class="block">
-				<button type="submit">등록</button>
+			
+			<a href="./detail.jsp"></a>
+			
+			<div align ="right">
+				<button type="submit" >등록</button>
+				
 			</div>
 		</form>
 	</div>
+			</div>
+	
 </body>
 </html>
