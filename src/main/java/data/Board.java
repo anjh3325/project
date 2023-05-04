@@ -1,10 +1,8 @@
 package data;
 
-import java.util.Date;
-
 public class Board {
 	
-	int boardId;
+	int id;
 	String writer;
 	String body;
 	
@@ -28,11 +26,11 @@ public class Board {
 	public void setContinent(String continent) {
 		this.continent = continent;
 	}
-	public int getBoardId() {
-		return boardId;
+	public int getId() {
+		return id;
 	}
-	public void setBoardId(int boardId) {
-		this.boardId = boardId;
+	public void setId(int id) {
+		this.id = id;
 	}
 	public String getWriter() {
 		return writer;

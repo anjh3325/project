@@ -20,16 +20,17 @@ public class SearchController extends HttpServlet {
 		req.setCharacterEncoding("utf-8");
 		resp.setContentType("text/search;charset=utf-8");
 		String countryNm = req.getParameter("countryNm");
-		
+		System.out.println(countryNm);
+
 		List<CountryData> li = new LinkedList<>();
-		
+
 		CountryData[] countryLi = CountryAPI.getCountries().getData();
-		for(CountryData i : countryLi) {
-			if(i.getCountryNm().matches(".+?["+ countryNm +"].?")) {
+		for (CountryData i : countryLi) {
+			if (i.getCountryNm().matches("(.+)?" + countryNm + "(.+)?")) {
 				li.add(i);
 			}
 		}
-		
+
 		req.setAttribute("findSearch", li);
 		req.getRequestDispatcher("/WEB-INF/views/search.jsp").forward(req, resp);
 	}

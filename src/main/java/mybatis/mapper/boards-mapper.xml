@@ -9,4 +9,7 @@
 	<insert id="createBoard" parameterType="data.Board">
 		insert into boards values (boards_SEQ.NEXTVAL, #{writer }, #{body }, #{totalUsers }, #{time })
 	</insert>
+	<select id="findByTargetBoard" resultType="data.Board">
+		SELECT * FROM BOARDS WHERE ID = #{boardId }
+	</select>
 </mapper>
