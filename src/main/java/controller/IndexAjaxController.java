@@ -1,6 +1,7 @@
 package controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -10,27 +11,32 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.google.gson.Gson;
+
 import data.country.CountryData;
 import util.CountryAPI;
 
-@WebServlet("/search")
-public class SearchController extends HttpServlet {
+@WebServlet("/index/word")
+public class IndexAjaxController extends HttpServlet{
+	
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		req.setCharacterEncoding("utf-8");
-		resp.setContentType("text/search;charset=utf-8");
-		String countryNm = req.getParameter("countryNm");
-		
-		List<CountryData> li = new LinkedList<>();
+
+		String word = req.getParameter("word");
+		resp.setContentType("text/plain;charset=utf-8");
+
+		List<String> li = new LinkedList<>();
 		
 		CountryData[] countryLi = CountryAPI.getCountries().getData();
-		for(CountryData i : countryLi) {
-			if(i.getCountryNm().matches(".+?["+ countryNm +"].?")) {
-				li.add(i);
+		
+		PrintWriter out = resp.getWriter();
+		for (String w : li) {
+			if (w.startsWith(word)) {
+				li.add(w);
 			}
 		}
+		Gson gson = new Gson();
 		
-		req.setAttribute("findSearch", li);
-		req.getRequestDispatcher("/WEB-INF/views/search.jsp").forward(req, resp);
+		out.println(gson.toJson(li));
 	}
 }
