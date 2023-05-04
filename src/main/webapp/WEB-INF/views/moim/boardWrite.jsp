@@ -65,33 +65,31 @@
 	<div align="center">
 	
 	
-		<form action="/moim/boardWrite-task" method="post" class="moim-form"
+		<form action="/board/write-task" class="moim-form"
 			autocomplete="off">
 			<div class="block">
 				<span>모임 이름</span>
 				
 				<div class="block">
-					<input type="text" name="event" />
+					<input type="text" name="title" />
 				</div>
 			<div class="block">
 				<label>모임의 <span>장소, 참가 인원 수</span>
 				</label>
 				<div class="block-row" style="justify-content: center">
 				
-						<select name="type" style="flex: 1; text-align: center">
-						
-						</select>
+
 					</div>
 					<div class="block-row" style="flex: 1">
-						<select name="cate" style="flex: 1; text-align: center">
+						<select name="continent" style="flex: 1; text-align: center">
 							<c:forTokens items="아시아, 유럽, 아메리카, 아프리카, 중동" delims="," var="one">
 								<option value="${one }">${one }</option>
 							</c:forTokens>
 						</select>
 					</div>
 					<div class="block-row" style="flex: 1">
-						<select name="maxPerson" style="flex: 1; text-align: center">
-							<c:forEach var="cnt" begin="2" end="99">
+						<select name="totalUsers" style="flex: 1; text-align: center">
+							<c:forEach var="cnt" begin="2" end="7">
 								<option value="${cnt }">${cnt }명</option>
 							</c:forEach>
 						</select>
@@ -103,11 +101,11 @@
 		
 				<div class="block-row" style="flex: 1">
 					<div class="block" style="flex: 2">
-						<fmt:formatDate value="${today }" pattern="yyyy-MM-dd" var="defaultDate"/>
+						<fmt:formatDate value="" pattern="yyyy-MM-dd" var="defaultDate"/>
 						<input type="date" style="text-align: center" name="date" value="${defaultDate }"/>
 					</div>
 					<div class="block" style="flex: 1">
-						<input type="time"  style="text-align: center" name="begin" />
+						<input type="time"  style="text-align: center" name="time" />
 					</div>
 					
 					
@@ -115,20 +113,17 @@
 			</div>
 			<div class="block" >
 				<label>내용</label>
-				<input type ="text" />
+				<input type ="text" name="body"/>
 				</div>
-			</div>
 			<div class="block">
-			
-			<a href="./detail.jsp"></a>
-			
-			<div align ="right">
-				<button type="submit" >등록</button>
+				<div align ="right">
+					<button type="submit" >등록</button>
 				
+				</div>
 			</div>
 		</form>
 	</div>
-			</div>
+		
 	
 </body>
 </html>

@@ -70,7 +70,7 @@ button[type=submit] {
 </head>
 <body>
 <div>
-<form action="/user/join-task" method="post" >
+<form action="/user/join-td" method="post" >
 	<h2>가입을 시작합니다</h2>
 			<p style="text-align: center;">
 				회원가입하시면 <br /> 다양한 서비스를 이용하실 수 있습니다.

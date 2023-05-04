@@ -1,26 +1,28 @@
 package repository;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 
 import data.Board;
 
 public class BoardsDAO extends DAO {
-	public static int createBoard(Board board) {
+	public static int createBoard(Map<String, Object> board) {
 		SqlSession session = factory.openSession();
 		try {
 			return session.insert("boards.createBorad", board);
-		}finally {
+		} finally {
 			session.commit();
 			session.close();
 		}
 	}
+
 	public static List<Board> findByBoard(String continent) {
 		SqlSession session = factory.openSession();
 		try {
 			return session.selectList("boards.findByBoard", continent);
-		}finally {
+		} finally {
 			session.close();
 		}
 	}

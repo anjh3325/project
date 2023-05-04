@@ -8,18 +8,54 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style type="text/css">
+#boardcss table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#boardcss thead tr {
+  background-color: #f2f2f2;
+}
+
+#boardcss th, #boardcss td {
+  text-align: center;
+  padding: 8px;
+  border-bottom: 1px solid #ddd;
+}
+
+#boardcss tbody tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+#boardcss tbody tr:hover {
+  background-color: #ddd;
+}
+
+#boardcss th {
+  font-weight: bold;
+  color: #333;
+}
+
+#boardcss td {
+  color: #555;
+}
+li{
+list-style-type: none;
+}
+</style>
 </head>
 <body>
   <h1>국가 위험 경보</h1>
-    <div style="text-align: center;">
-        <table>
-            <tr>
-                <td>
 
                     <h2>${countryData.countryNm }
                         (${countryData.countryEngNm }) <br /> 대륙:
                         ${countryData.continentEngNm }
                     </h2> 
+    <div >
+        <table>
+            <tr>
+                <td>
                     <img src="${countryData.flagUrl}" style="width: 300px; height: 200px">
                 </td>
                 <td>
@@ -44,11 +80,7 @@
                     <a href="/cautionDetailBoard?countryNm=${country }" id="meetingBtn"><button type="button">모임</button></a>
                    
                     <div id="commentBox" style="display: block;">
-                    <form action="/createComment">
-                        <input type="hidden" name="country" value="${country }" >
-                        <input type="text" placeholder="후기를 적어주세요" name="body"> <button type="submit">등록</button>
-                          
-                    </form>
+                   <a href="/board/write"><button type="button">글쓰기</button></a>
                     </div>
     			<div >
 		
@@ -62,19 +94,23 @@
     <div style="float: left; margin-right: 10px;">
         <img src="${countryData.mapUrl }" style="width: 600px; height: 500px;">
     </div>
-    <div style="float: right; width: calc(100% - 630px);">
-        <c:forEach items="${boardLi }" var="comment">
+    <div style="float: right; width: calc(100% - 630px);" id="boardcss">
+        <c:forEach items="${boardLi }" var="li">
             <table>
                 <thead>
                     <tr>
+                    	
                         <th>작성자</th>
-                        <th>내용</th>
+                        <th>제목</th>
+                        <th>시간</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td>${comment.writer }</td>
-                        <td>${comment.body }</td>
+                  
+                        <td>${li.writer }</td>
+                       <td>${li.title }</td>
+                       <td>${li.time }</td>
                     </tr>
                 </tbody>
             </table>

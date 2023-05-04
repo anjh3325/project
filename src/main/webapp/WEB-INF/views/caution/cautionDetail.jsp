@@ -10,23 +10,109 @@
 <title>Insert title here</title>
 <style type="text/css">
 
+#commentcss table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#commentcss thead tr {
+  background-color: #f2f2f2;
+}
+
+#commentcss th, #commentcss td {
+  text-align: center;
+  padding: 8px;
+  border-bottom: 1px solid #ddd;
+}
+
+#commentcss tbody tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+#commentcss tbody tr:hover {
+  background-color: #ddd;
+}
+
+#commentcss th {
+  font-weight: bold;
+  color: #333;
+}
+
+#commentcss td {
+  color: #555;
+}
+li{
+list-style-type: none;
+}
+  /* 지도 버튼 스타일 */
+    .map-btn {
+        display: inline-block;
+        border: 2px solid #1A1A1A;
+        border-radius: 5px;
+        font-size: 16px;
+        font-weight: bold;
+        padding: 10px 20px;
+        color: #1A1A1A;
+        background-color: #F5F5F5;
+        text-decoration: none;
+        margin-right: 10px;
+    }
+
+    .map-btn:hover {
+        background-color: #1A1A1A;
+        color: #F5F5F5;
+        cursor: pointer;
+    }
+
+    /* 댓글 폼 스타일 */
+    #commentBox form {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        margin-top: 20px;
+    }
+
+    #commentBox input[type="text"] {
+        flex: 1;
+        border: none;
+        border-bottom: 2px solid #1A1A1A;
+        padding: 5px;
+        margin-right: 10px;
+    }
+
+    #commentBox button[type="submit"] {
+        border: none;
+        border-radius: 5px;
+        font-size: 16px;
+        font-weight: bold;
+        padding: 10px 20px;
+        color: #F5F5F5;
+        background-color: #1A1A1A;
+        text-decoration: none;
+    }
+
+    #commentBox button[type="submit"]:hover {
+        background-color: #F5F5F5;
+        color: #1A1A1A;
+        cursor: pointer;
+    }
 </style>
 </head>
 <body>
     <h1>국가 위험 경보</h1>
-    <div style="text-align: center;">
-        <table>
-            <tr>
-                <td>
-
+    <div >
                     <h2>${countryData.countryNm }
                         (${countryData.countryEngNm }) <br /> 대륙:
                         ${countryData.continentEngNm }
                     </h2> 
+        <table>
+            <tr>
+                <td>
+
                     <img src="${countryData.flagUrl}" style="width: 300px; height: 200px">
                 </td>
                 <td>
-                    <ul>
+                    <ul >
 
                         <li>면적 : <fmt:formatNumber value="${DetailData.area }"
                                 pattern="#,###" /> km2
@@ -65,7 +151,7 @@
     <div style="float: left; margin-right: 10px;">
         <img src="${countryData.mapUrl }" style="width: 600px; height: 500px;">
     </div>
-    <div style="float: right; width: calc(100% - 630px);">
+    <div style="float: right; width: calc(100% - 630px);"id="commentcss">
         <c:forEach items="${commentLi }" var="comment">
             <table>
                 <thead>
