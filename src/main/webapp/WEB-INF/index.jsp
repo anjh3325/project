@@ -22,6 +22,7 @@
 			<c:otherwise>
 				<div style="padding: 10px 20px;">
 					<a href="/user/login">로그인</a>
+					<a href="/user/join">회원가입</a>
 				</div>
 			</c:otherwise>
 		</c:choose>

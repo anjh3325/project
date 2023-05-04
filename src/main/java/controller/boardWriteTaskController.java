@@ -43,7 +43,7 @@ public class boardWriteTaskController extends HttpServlet {
 			resp.sendRedirect("/cautionDetail?country=" + country);
 		} else {
 			req.getRequestDispatcher(
-					"/WEB-INF/views/moim/boardWrite?continent=" + continent + "&country=" + country + "&error=-1")
+					"/WEB-INF/views/moim/boardWrite.jsp?continent=" + continent + "&country=" + country + "&error=-1")
 					.forward(req, resp);
 		}
 	}

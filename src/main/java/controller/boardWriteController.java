@@ -18,7 +18,12 @@ public class boardWriteController extends HttpServlet {
 		System.out.println("!");
 		String continent = req.getParameter("continent"); //대륙값
 		String country = req.getParameter("country");
-		req.getRequestDispatcher("/WEB-INF/views/moim/boardWrite.jsp?continent=" + continent + "&country=" + country).forward(req, resp); 
+
+		req.setAttribute("continent", continent);
+		req.setAttribute("country", country);
+		
+		
+		req.getRequestDispatcher("/WEB-INF/views/moim/boardWrite.jsp").forward(req, resp); 
 		
 	}
 }
