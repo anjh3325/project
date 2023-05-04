@@ -21,7 +21,8 @@ public class boardWriteTaskController extends HttpServlet {
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		HttpSession session = req.getSession();
 		User user = (User) session.getAttribute("logonUser");
-
+		
+		
 		String nick = user.getNick();
 		String continent = req.getParameter("continent");
 		String country = req.getParameter("country");
@@ -42,7 +43,7 @@ public class boardWriteTaskController extends HttpServlet {
 			resp.sendRedirect("/cautionDetail?country=" + country);
 		} else {
 			req.getRequestDispatcher(
-					"/WEB-INF/views/moim/boardWrite?continent=" + continent + "&country=" + country + "&error=-1")
+					"/WEB-INF/views/moim/boardWrite.jsp?continent=" + continent + "&country=" + country + "&error=-1")
 					.forward(req, resp);
 		}
 	}

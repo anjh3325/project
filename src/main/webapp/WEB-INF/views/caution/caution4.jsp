@@ -44,15 +44,10 @@ tr:nth-child(even) {
 <body>
 	<div style="width: 700px; margin: auto">
 		<div>
-		<img src="/resource/image/step1.png" /><img src="/resource/image/step2.png" />
-			<img src="/resource/image/step3.png" /><img src="/resource/image/4단계.png" />
+		<a href="/caution?alarmLvl=1"><img src="/resource/image/step1.png" width ="350"height ="116"/></a><a href="/caution?alarmLvl=2"><img src="/resource/image/step2.png" width ="350"height ="116"/></a>
+			<a href="/caution?alarmLvl=3"><img src="/resource/image/step3.png" width ="350" height ="116"/></a><img src="/resource/image/4단계.png" width ="350"height ="116"/>
 		</div>
-		<div>
-			<button>1단계</button>
-			<button>2단계</button>
-			<button>3단계</button>
-			<button>4단계</button>
-		</div>
+		
 		<div>
 			<table style="width: 100%">
 				<tr>

@@ -1,6 +1,7 @@
 package controller.comment;
 
 import java.io.IOException;
+import java.net.URLEncoder;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -21,8 +22,9 @@ public class createComment extends HttpServlet {
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		HttpSession session = req.getSession();
 		User user = (User)session.getAttribute("logonUser");
-
+	
 		String nick = user.getNick();
+		//nick = "철이";
 		String country = req.getParameter("country");
 		String body = req.getParameter("body");
 		
@@ -34,11 +36,13 @@ public class createComment extends HttpServlet {
 		map.put("body", body);
 		
 		int r = CommentsDAO.createComment(map);
+		country = URLEncoder.encode(country, "utf-8");
+		System.out.println(country);
 		
 		if(r == 1) {
-			resp.sendRedirect("/cautionDetail?coutnry=" + country);
+			resp.sendRedirect("/cautionDetail?countryNm=" + country);
 		}else {
-			resp.sendRedirect("/cautionDetail?coutnry=" + country + "&error=2");
+			resp.sendRedirect("/cautionDetail?countryNm=" + country + "&error=2");
 		}
 		
 	}
