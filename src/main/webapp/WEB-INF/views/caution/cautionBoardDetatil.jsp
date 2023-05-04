@@ -8,12 +8,9 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<style type="text/css">
-
-</style>
 </head>
 <body>
-    <h1>국가 위험 경보</h1>
+  <h1>국가 위험 경보</h1>
     <div style="text-align: center;">
         <table>
             <tr>
@@ -66,7 +63,7 @@
         <img src="${countryData.mapUrl }" style="width: 600px; height: 500px;">
     </div>
     <div style="float: right; width: calc(100% - 630px);">
-        <c:forEach items="${commentLi }" var="comment">
+        <c:forEach items="${boardLi }" var="comment">
             <table>
                 <thead>
                     <tr>
@@ -84,12 +81,5 @@
         </c:forEach>
     </div>
 </div>
-	<script type="text/javascript">
-	
-      
-     
-	</script>
-
-
 </body>
 </html>
