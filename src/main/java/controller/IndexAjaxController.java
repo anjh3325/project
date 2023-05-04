@@ -16,7 +16,7 @@ import com.google.gson.Gson;
 import data.country.CountryData;
 import util.CountryAPI;
 
-@WebServlet("/index/word")
+@WebServlet("/index/ajax")
 public class IndexAjaxController extends HttpServlet{
 	
 	@Override
@@ -30,9 +30,9 @@ public class IndexAjaxController extends HttpServlet{
 		CountryData[] countryLi = CountryAPI.getCountries().getData();
 		
 		PrintWriter out = resp.getWriter();
-		for (String w : li) {
-			if (w.startsWith(word)) {
-				li.add(w);
+		for (CountryData data : countryLi) {
+			if (data.getCountryNm().contains(word)) {
+				li.add(data.getCountryNm());
 			}
 		}
 		Gson gson = new Gson();
