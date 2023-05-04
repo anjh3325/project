@@ -6,6 +6,7 @@ import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.net.http.HttpResponse.BodyHandlers;
+import java.util.Iterator;
 
 import com.google.gson.Gson;
 
@@ -24,6 +25,7 @@ public class CountryAPI {
 			String queryString = serviceKey + numOfRows + pageNo;
 			
 			URI uri = new URI(target + "?" + queryString);
+			
 
 			// HttpClient 객체를 활용하는 방식
 			HttpClient client = HttpClient.newHttpClient();
