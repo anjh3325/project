@@ -14,7 +14,7 @@ public class UserJoinController extends HttpServlet {
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-		req.getRequestDispatcher("/WEB-INF/views/user/join.jsp").forward(req, resp);
+		req.getRequestDispatcher("/WEB-INF/views/user/sign.jsp").forward(req, resp);
 
 	}
 }

@@ -1,7 +1,8 @@
 package controller;
 
 import java.io.IOException;
-import java.util.Date;
+import java.util.LinkedHashMap;
+import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -10,8 +11,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import data.Board;
-import data.User;
 import repository.BoardsDAO;
 
 @WebServlet("/board/write-task")
@@ -20,23 +19,29 @@ public class boardWriteTaskController extends HttpServlet {
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		HttpSession session = req.getSession();
-		User user = (User) session.getAttribute("logonUser");
+		//User user = (User) session.getAttribute("logonUser");
+		//user.getNick()
 		
-		
-		String nick = user.getNick();
+		String nick = "철이";
 		String continent = req.getParameter("continent");
 		String country = req.getParameter("country");
 		String body = req.getParameter("body");
 		int totalUsers = Integer.parseInt(req.getParameter("totalUsers"));
-		String time = req.getParameter("time");
-
-		Board board = new Board();
-		board.setWriter(nick);
-		board.setBody(body);
-		board.setContinent(continent);
-		board.setTime(time);
-		board.setTotalUsers(totalUsers);
-
+		String date = req.getParameter("date");
+		String time = date + " " + req.getParameter("time");
+		String title=req.getParameter("title");
+		
+	
+		
+		 System.out.println(time);
+		Map<String, Object> board = new LinkedHashMap<>();
+		board.put("writer" , nick);
+		board.put("body", body);
+		board.put("totalUsers", totalUsers);
+		board.put("time", time);
+		board.put("title", title);
+		
+		
 		int r = BoardsDAO.createBoard(board);
 
 		if (r == 1) {

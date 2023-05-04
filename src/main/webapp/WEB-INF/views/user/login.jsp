@@ -72,7 +72,7 @@ button:hover {
 </style>
 </head>
 <body>
-	<form action="/user/login-task" method="post">
+	<form action="/user/login-ta" method="post">
 		<div style="text-align: center">
 			<h2>로그인 창</h2>
 			<div>
