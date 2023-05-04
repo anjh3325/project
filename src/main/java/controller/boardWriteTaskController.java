@@ -22,7 +22,7 @@ public class boardWriteTaskController extends HttpServlet {
 		HttpSession session = req.getSession();
 		User user = (User) session.getAttribute("logonUser");
 		
-		System.out.println("!");
+		
 		String nick = user.getNick();
 		String continent = req.getParameter("continent");
 		String country = req.getParameter("country");
