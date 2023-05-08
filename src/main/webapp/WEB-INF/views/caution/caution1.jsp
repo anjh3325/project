@@ -81,7 +81,7 @@
 					<td class="right">
 						<ul>
 							<c:forEach items="${africa }" var="one">
-								<li><b>${one.countryNm }</b> (${one.remark })</li>
+								<a href="/cautionDetail?countryNm=${one.countryNm }"><li><b>${one.countryNm }</b> (${one.remark })</li></a>
 							</c:forEach>
 						</ul>
 					</td>
@@ -91,7 +91,7 @@
 					<td class="right">
 						<ul>
 							<c:forEach items="${america }" var="one">
-								<li><b>${one.countryNm }</b> (${one.remark })</li>
+								<a href="/cautionDetail?countryNm=${one.countryNm }"><li><b>${one.countryNm }</b> (${one.remark })</li></a>
 							</c:forEach>
 						</ul>
 					</td>
@@ -101,7 +101,7 @@
 					<td class="right">
 						<ul>
 							<c:forEach items="${asia }" var="one">
-								<li><b>${one.countryNm }</b> (${one.remark })</li>
+								<a href="/cautionDetail?countryNm=${one.countryNm }"><li><b>${one.countryNm }</b> (${one.remark })</li></a>
 							</c:forEach>
 						</ul>
 					</td>
@@ -111,7 +111,7 @@
 					<td class="right">
 						<ul>
 							<c:forEach items="${euroup }" var="one">
-								<li><b>${one.countryNm }</b> (${one.remark })</li>
+								<a href="/cautionDetail?countryNm=${one.countryNm }"><li><b>${one.countryNm }</b> (${one.remark })</li></a>
 							</c:forEach>
 						</ul>
 					</td>
@@ -121,7 +121,7 @@
 					<td class="right">
 						<ul>
 							<c:forEach items="${middleEast }" var="one">
-								<li><b>${one.countryNm }</b> (${one.remark })</li>
+								<a href="/cautionDetail?countryNm=${one.countryNm }"><li><b>${one.countryNm }</b> (${one.remark })</li></a>
 							</c:forEach>
 						</ul>
 					</td>

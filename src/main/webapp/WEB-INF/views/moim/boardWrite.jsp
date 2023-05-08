@@ -19,7 +19,7 @@ form {
 		 justify-content: center;
 		height:100vh;
 		background-color: #E7F0F3;
-		opacity: 0.7;
+		
 		
 	}
 	
@@ -57,7 +57,10 @@ form {
 </style>
 </head>
 <body>
-
+<div align="left">
+  <p style="font-size: 24px; font-weight: bold;">카페글쓰기</p>
+</div>
+            
 	<div align="center">
 	
 	
@@ -113,7 +116,7 @@ form {
 				<input type="text" name="body"  style="width: 350px; height: 120px;" id="q" list="qlist" autocomplete="off"> 
 				</div>
 			<div class="block">
-				<div align ="right">
+				<div align ="center">
 					<button type="submit" >등록</button>
 					
 				</div>
