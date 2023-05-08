@@ -67,6 +67,7 @@
 	
 		<form action="/board/write-task" class="moim-form"
 			autocomplete="off">
+			<input type="hidden" name="country" value="${country }"/>
 			<div class="block">
 				<span>모임 이름</span>
 				

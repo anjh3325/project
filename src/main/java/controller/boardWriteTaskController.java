@@ -1,6 +1,7 @@
 package controller;
 
 import java.io.IOException;
+import java.net.URLEncoder;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
@@ -26,12 +27,13 @@ public class boardWriteTaskController extends HttpServlet {
 		String continent = req.getParameter("continent");
 		String country = req.getParameter("country");
 		String body = req.getParameter("body");
-		int totalUsers = Integer.parseInt(req.getParameter("totalUsers"));
+		String totalUsers = req.getParameter("totalUsers");
 		String date = req.getParameter("date");
 		String time = date + " " + req.getParameter("time");
 		String title=req.getParameter("title");
 		
-	
+		System.out.println(country);
+		System.out.println(continent);
 		
 		 System.out.println(time);
 		Map<String, Object> board = new LinkedHashMap<>();
@@ -39,16 +41,17 @@ public class boardWriteTaskController extends HttpServlet {
 		board.put("body", body);
 		board.put("totalUsers", totalUsers);
 		board.put("time", time);
+		board.put("continent", continent);
 		board.put("title", title);
 		
 		
 		int r = BoardsDAO.createBoard(board);
-
+		System.out.println(r);
 		if (r == 1) {
-			resp.sendRedirect("/cautionDetail?country=" + country);
+			resp.sendRedirect("/cautionDetail?countryNm=" + URLEncoder.encode(country, "utf-8"));
 		} else {
 			req.getRequestDispatcher(
-					"/WEB-INF/views/moim/boardWrite.jsp?continent=" + continent + "&country=" + country + "&error=-1")
+					"/WEB-INF/views/moim/boardWrite.jsp?continent=" + URLEncoder.encode(continent, "utf-8") + "&country=" + URLEncoder.encode(country, "utf-8") + "&error=-1")
 					.forward(req, resp);
 		}
 	}
