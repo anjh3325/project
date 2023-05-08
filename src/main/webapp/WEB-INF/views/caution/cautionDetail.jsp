@@ -105,89 +105,103 @@ list-style-type: none;
     body {
 	background-color: #8FCFD1;
 }
+.comment-container {
+  flex-direction: column;
+  align-items: center;
+}
+
+.comment {
+  margin: 10px;
+  padding: 10px;
+  border: 1px solid ;
+  border-radius: 5px;
+  max-width: 500px;
+}
+
+.comment .writer {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.comment .body {
+  font-size: 15px;
+}
 </style>
 </head>
 <body>
-    <h1 style="text-align: center;">국가 위험 경보</h1>
- <div style="display: flex;">
+  <h1 style="text-align: center;">국가 위험 경보</h1>
+
+  <div style="display: flex; align-content: center; align-items: center;justify-content: center; gap:20px ">
+    <div style="display: flex; gap:20px;">
     
-    <div>
     
-                    <h2>${countryData.countryNm }
-                        (${countryData.countryEngNm }) <br /> 대륙:
-                        ${countryData.continentEngNm } </h2> 
-    
-                    <img src="${countryData.flagUrl}" style="width: 300px; height: 200px">
-                  <img src="${countryData.mapUrl }" style="width: 500px; height: 400px;">
+
+    <div class="list-container">
+      <img src="${countryData.flagUrl}" style="width: 300px; height: 200px">
+      <h2>${countryData.countryNm} (${countryData.countryEngNm}) <br /> 대륙: ${countryData.continentEngNm}</h2> 
+
+      <div class="list-item">
+        <span class="item-title">면적:</span>
+        <span class="item-content">${DetailData.area}</span>
+        <span class="item-desc">${DetailData.areaDesc}</span>
+      </div>
+
+      <div class="list-item">
+        <span class="item-title">수도:</span>
+        <span class="item-content">${DetailData.capital}</span>
+      </div>
+
+      <div class="list-item">
+        <span class="item-title">국경일:</span>
+        <span class="item-content">${DetailData.establish eq null ? '정보없음' : DetailData.establish}</span>
+      </div>
+
+      <div class="list-item">
+        <span class="item-title">인구:</span>
+        <span class="item-content">${DetailData.population}</span>
+      </div>
+
+      <div class="list-item">
+        <span class="item-title">종교:</span>
+        <span class="item-content">${DetailData.religion eq null ? '정보없음' : DetailData.religion}</span>
+      </div>
+
+      <div class="list-item">
+        <span class="item-title">기후:</span>
+        <span class="item-content">${DetailData.climate eq null ? '정보없음' : DetailData.climate}</span>
+      </div>
     </div>
-       
-       
-   <div style="overflow: auto;">
-    <div style="float: left; margin-right: 10px;">
+
+    <div style="overflow: auto;">
+      <div style="float: left; margin-right: 10px;">
+        <img src="${countryData.mapUrl}" style="width: 600px; height: 500px;">
+      </div>
+	</div>
+      </div>
+      
+
+        <div id="commentBox" style="display: block;">
+        <a href="/cautionDetail?countryNm=${country}" id="reviewBtn"><button class="detail-button" type="button">여행후기</button></a> 
+        <a href="/cautionDetailBoard?countryNm=${country}" id="meetingBtn"><button type="button" class="detail-button">모임</button></a>
+          <form action="/createComment">
+            <input type="hidden" name="country" value="${country}"/>
+            <input type="text" placeholder="후기를 적어주세요" name="body" autocomplete="off"/>
+            <button type="submit">등록</button>
+          </form>
+      
+     <div class="comment-container">
+  <c:forEach items="${commentLi}" var="comment">
+    <div class="comment">
+      <div class="writer">${comment.writer}</div>
+      <div class="body">${comment.body}</div>
+    </div>
+  </c:forEach>
+</div>
+        </div>
       
     </div>
 
-       </div>            
-               <div class="list-container">
-  <div class="list-item">
-    <span class="item-title">면적:</span>
-    <span class="item-content">${DetailData.area }</span>
-    <span class="item-desc">${DetailData.areaDesc }</span>
-  </div>
-  <div class="list-item">
-    <span class="item-title">수도:</span>
-    <span class="item-content">${DetailData.capital }</span>
-  </div>
-  <div class="list-item">
-    <span class="item-title">국경일:</span>
-    <span class="item-content">${DetailData.establish eq null ? '정보없음' : DetailData.establish }</span>
-  </div>
-  <div class="list-item">
-    <span class="item-title">인구:</span>
-    <span class="item-content">${DetailData.population }</span>
-  </div>
-  <div class="list-item">
-    <span class="item-title">종교:</span>
-    <span class="item-content">${DetailData.religion eq null ? '정보없음' : DetailData.religion }</span>
-  </div>
-  <div class="list-item">
-    <span class="item-title">기후:</span>
-    <span class="item-content">${DetailData.climate eq null ? '정보없음' : DetailData.climate }</span>
-  </div>
-</div>
-               
-           	
-                    <a href="/cautionDetail?countryNm=${country }" id="reviewBtn"><button class="detail-button" type="button">여행후기</button></a> 
-                    <a href="/cautionDetailBoard?countryNm=${country }" id="meetingBtn"><button type="button" class="detail-button">모임</button></a>
-                   
-                    <div id="commentBox" style="display: block;">
-                    <form action="/createComment">
-                        <input type="hidden" name="country" value="${country }" >
-                        <input type="text" placeholder="후기를 적어주세요" name="body" autocomplete="off"> <button type="submit">등록</button>
-                          
-                    </form>
-                    </div>
-    			
-
-    <div style="float: right; width: calc(100% - 630px);"id="commentcss">
-        <c:forEach items="${commentLi }" var="comment">
-            <table>
-                <thead>
-                    <tr>
-                        <th>작성자</th>
-                        <th>내용</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>${comment.writer }</td>
-                        <td>${comment.body }</td>
-                    </tr>
-                </tbody>
-            </table>
-        </c:forEach>
-    </div>
-</div>
+</body>
 	<script type="text/javascript">
 	
       

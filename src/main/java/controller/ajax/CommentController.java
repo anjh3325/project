@@ -36,7 +36,7 @@ public class CommentController extends HttpServlet {
 		CountryData countryData = CountryAPI.findCountry(country);
 		req.setAttribute("countryData", countryData);
 
-		String continent = countryData.getContinentNm();
+		String continent = countryData.getContinentEngNm();
 		
 
 		List<Board> boardLi = BoardsDAO.findByBoard(continent);

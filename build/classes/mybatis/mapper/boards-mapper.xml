@@ -12,4 +12,10 @@
 	<select id="findByTargetBoard" resultType="data.Board">
 		SELECT * FROM BOARDS WHERE ID = #{boardId }
 	</select>
+	
+	<select id="findSomeByAtoB" resultType="data.Moim"
+		parameterType="hashmap">
+		SELECT * FROM(SELECT * FROM (SELECT * FROM BOARDS WHERE continent = #{continent })RN ORDER by TIME - SYSDATE)
+		WHERE RN BETWEEN #{a} AND #{b}
+	</select>	
 </mapper>
