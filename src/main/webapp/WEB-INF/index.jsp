@@ -32,7 +32,7 @@ body {
 				<div style="font-size: 30px;">
 					<b>제목영역입니다</b>
 				</div>
-				<div style="margin-right: 30px; padding-top:4px;">
+				<div align="right" style="padding: 10px 20px;">
 					<b>${logonUser.nick }</b>
 					<a href="/user/logout">로그아웃</a>
 				</div>

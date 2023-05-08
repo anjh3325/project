@@ -9,7 +9,7 @@
 </head>
 <body>
 	<c:forEach items="${findSearch }" var="data">
-		${data.countryNm }
+		<a href="/cautionDetail?countryNm=${data.countryNm }">${data.countryNm }</a>
 	</c:forEach>
 </body>
 </html>

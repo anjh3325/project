@@ -80,7 +80,7 @@ list-style-type: none;
                     <a href="/cautionDetailBoard?countryNm=${country }" id="meetingBtn"><button type="button">모임</button></a>
                    
                     <div id="commentBox" style="display: block;">
-                   <a href="/board/write"><button type="button">글쓰기</button></a>
+                   <a href="/board/write?country=${country }"><button type="button">글쓰기</button></a>
                     </div>
     			<div >
 		
