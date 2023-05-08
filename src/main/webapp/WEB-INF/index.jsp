@@ -30,11 +30,11 @@ body {
 
 		<c:choose>
 			<c:when test="${sessionScope.logon }">
-				<div style="margin-right: 30px; padding-top: 4px;">
-					<b>${logonUser.nick }</b> <a href="/user/logout">로그아웃</a>
+				<div align="right" style="padding: 10px 20px;">
+					<b>${logonUser.nick }</b>
+					<a href="/user/logout">로그아웃</a>
 				</div>
-
-			</c:when>
+				</c:when>
 			<c:otherwise>
 				<div align="right" style="">
 					<a href="/user/login">로그인</a> <a href="/user/join">회원가입</a>
