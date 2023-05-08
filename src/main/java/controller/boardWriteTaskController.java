@@ -48,7 +48,7 @@ public class boardWriteTaskController extends HttpServlet {
 		int r = BoardsDAO.createBoard(board);
 		System.out.println(r);
 		if (r == 1) {
-			resp.sendRedirect("/cautionDetail?countryNm=" + URLEncoder.encode(country, "utf-8"));
+			resp.sendRedirect("/cautionDetailBoard?countryNm=" + URLEncoder.encode(country, "utf-8"));
 		} else {
 			req.getRequestDispatcher(
 					"/WEB-INF/views/moim/boardWrite.jsp?continent=" + URLEncoder.encode(continent, "utf-8") + "&country=" + URLEncoder.encode(country, "utf-8") + "&error=-1")

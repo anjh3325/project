@@ -7,39 +7,65 @@
 <meta charset="UTF-8">
 <title>국가별 단계표출</title>
 <style>
-div {
-	padding : 4px 0px;
-}
-ul {
-	list-style: none;
-}
-
-.left {
-	width: 10%;
-	text-align: center;
-}
-
-.right {
-	width: 90%;
-	text-align: left
-}
-
-table {
-	font-family: arial, sans-serif;
-	border-collapse: collapse;
-	width: 100%;
-}
-
-td, th {
-	border: 1px solid #dddddd;
-	text-align: left;
-	padding: 8px;
-}
-
-tr:nth-child(even) {
-	background-color: #dddddd;
-}
-</style>
+		body {
+			background-color: #E7F0F3;
+			font-family: Arial, sans-serif;
+			margin: 0;
+		}
+		.container {
+			background-color: white;
+			border-radius: 10px;
+			box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+			margin: 30px auto;
+			max-width: 800px;
+			padding: 20px;
+		}
+		.header {
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: space-between;
+			margin-bottom: 20px;
+		}
+		.header img {
+			margin-right: 10px;
+		}
+		.header a img {
+			margin-left: 10px;
+		}
+		table {
+			border-collapse: collapse;
+			width: 100%;
+		}
+		td, th {
+			border: 1px solid #dddddd;
+			padding: 8px;
+			text-align: left;
+			vertical-align: top;
+		}
+		tr:nth-child(even) {
+			background-color: #F6F6F6;
+		}
+		ul {
+			list-style: none;
+			margin: 0;
+			padding-left: 0;
+		}
+		li {
+			margin-bottom: 8px;
+		}
+		li b {
+			font-weight: bold;
+		}
+		.left {
+			padding-right: 8px;
+			text-align: right;
+			vertical-align: top;
+			width: 15%;
+		}
+		.right {
+			width: 85%;
+		}
+	</style>
 </head>
 <body>
 	<div style="width: 700px; margin: auto">

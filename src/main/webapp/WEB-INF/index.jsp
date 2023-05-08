@@ -30,6 +30,9 @@ body {
 
 		<c:choose>
 			<c:when test="${sessionScope.logon }">
+				<div style="font-size: 30px;">
+					<b>해외여행 국가경보</b>
+				</div>
 				<div align="right" style="padding: 10px 20px;">
 					<b>${logonUser.nick }</b>
 					<a href="/user/logout">로그아웃</a>
