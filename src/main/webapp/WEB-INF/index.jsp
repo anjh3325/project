@@ -8,6 +8,12 @@
 <head>
 <meta charset="UTF-8">
 <title>국가경보</title>
+<link rel="stylesheet" href="/resource/style.css">
+<link
+    href="https://cdn.jsdelivr.net/gh/hung1001/font-awesome-pro-v6@44659d9/css/all.min.css"
+    rel="stylesheet" type="text/css" />
+<link rel="stylesheet"
+    href="https://cdn.jsdelivr.net/gh/hung1001/font-awesome-pro@4cac1a6/css/all.css" />
 <style>
 * {
 	font-family: 'GmarketSansMedium';
@@ -22,14 +28,17 @@ body {
 	background-size: cover;
 }
 </style>
-<link rel="stylesheet" href="/resource/style.css">
-</head>
+ </head>
+
 <body>
 	<div style="text-align: center">
-		<div style="text-align: center">제목영역입니다</div>
+		<div style="text-align: center; font-size: 50px;">국가여행경보</div>
 
 		<c:choose>
 			<c:when test="${sessionScope.logon }">
+				<div style="font-size: 300px">
+					
+				</div>
 				<div align="right" style="padding: 10px 20px;">
 					<b>${logonUser.nick }</b>
 					<a href="/user/logout">로그아웃</a>
@@ -46,7 +55,9 @@ body {
 				<%--
 				<img src="/resource/image/worldmap.png" style="opacity: 0.5; justify-content: content;">
 				--%>
+				
 				<form action="/search">
+		</div>
 					<%--
 				<input type="text" name="countryNm" style="width: 350px; height: 45px;"> <button type="submit">돋보기</button>	
 				--%>
@@ -56,9 +67,17 @@ body {
 					<datalist id="qlist">
 
 					</datalist>
-					<button type="submit">돋보기</button>
+					<button type="submit" style="width: 40px; text-align: center;"><i class="fa-solid fa-magnifying-glass"></i>
+					</button>
 				</form>
 			</div>
+			<p>
+				<a href="/caution?alarmLvl=1">
+			<img src="/resource/image/step1.png" width ="350"height ="116"/><a href="/caution?alarmLvl=2"><img src="/resource/image/step2.png" width ="350"height ="116"/></a>
+			</p>
+			<p>
+		<a href="/caution?alarmLvl=3"><img src="/resource/image/step3.png" width ="350" height ="116" /></a><a href="/caution?alarmLvl=4"><img src="/resource/image/step4.png" width ="350" height ="116"/></a>
+			</p>
 			<%--
 			<p><a href="/caution?alarmLvl=1"><img src="/resource/image/step1.png"/></a></p>
 			<p><a href="/caution?alarmLvl=2"><img src="/resource/image/step2.png"/></a></p>

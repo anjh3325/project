@@ -11,7 +11,9 @@ public class BoardsDAO extends DAO {
 	public static int createBoard(Map<String, Object> board) {
 		SqlSession session = factory.openSession();
 		try {
-			return session.insert("boards.createBoard", board);        
+
+			return session.insert("boards.createBoard", board);
+
 		} finally {
 			session.commit();
 			session.close();
@@ -26,13 +28,14 @@ public class BoardsDAO extends DAO {
 			session.close();
 		}
 	}
+
 	public static Board findByTargetBoard(int boardId) {
 		SqlSession session = factory.openSession();
 		try {
 			return session.selectOne("boards.findByTargetBoard", boardId);
-		}finally {
+		} finally {
 			session.close();
 		}
-		
+
 	}
 }
