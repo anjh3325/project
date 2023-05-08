@@ -11,7 +11,9 @@ public class BoardsDAO extends DAO {
 	public static int createBoard(Map<String, Object> board) {
 		SqlSession session = factory.openSession();
 		try {
+
 			return session.insert("boards.createBoard", board);
+
 		} finally {
 			session.commit();
 			session.close();
