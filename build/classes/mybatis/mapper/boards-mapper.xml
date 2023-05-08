@@ -13,9 +13,9 @@
 		SELECT * FROM BOARDS WHERE ID = #{boardId }
 	</select>
 	
-	<select id="findSomeByAtoB" resultType="data.Moim"
+	<select id="findByBoardsAtoB" resultType="data.Board"
 		parameterType="hashmap">
-		SELECT * FROM(SELECT * FROM (SELECT * FROM BOARDS WHERE continent = #{continent })RN ORDER by TIME - SYSDATE)
+		SELECT * FROM (SELECT ROWNUM RN, t.* FROM (SELECT * FROM BOARDS WHERE continent = #{continent })t ORDER by TIME - SYSDATE)
 		WHERE RN BETWEEN #{a} AND #{b}
-	</select>	
+	</select>
 </mapper>
