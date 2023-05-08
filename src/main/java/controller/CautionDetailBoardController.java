@@ -1,4 +1,4 @@
-package controller.ajax;
+package controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -22,7 +22,7 @@ import util.CountryAPI;
 import util.DetailAPI;
 
 @WebServlet("/cautionDetailBoard")
-public class CommentController extends HttpServlet {
+public class CautionDetailBoardController extends HttpServlet {
 
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -36,9 +36,9 @@ public class CommentController extends HttpServlet {
 		CountryData countryData = CountryAPI.findCountry(country);
 		req.setAttribute("countryData", countryData);
 
-		String continent = countryData.getContinentNm();
+		String continent = countryData.getContinentEngNm();
 		
-
+		System.out.println(continent);
 		List<Board> boardLi = BoardsDAO.findByBoard(continent);
 		req.setAttribute("boardLi", boardLi);
 		

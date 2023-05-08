@@ -96,6 +96,7 @@ list-style-type: none;
     </div>
     <div style="float: right; width: calc(100% - 630px);" id="boardcss">
         <c:forEach items="${boardLi }" var="li">
+                    <a href="/boardDetail?boardId=${li.id }">${li.writer }</a>
             <table>
                 <thead>
                     <tr>
@@ -105,14 +106,11 @@ list-style-type: none;
                         <th>시간</th>
                     </tr>
                 </thead>
-                <tbody>
-                    <tr>
-                  
-                        <td>${li.writer }</td>
-                       <td>${li.title }</td>
-                       <td>${li.time }</td>
-                    </tr>
-                </tbody>
+                
+                   
+                    
+                   
+                
             </table>
         </c:forEach>
     </div>

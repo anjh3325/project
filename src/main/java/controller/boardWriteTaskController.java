@@ -32,10 +32,18 @@ public class boardWriteTaskController extends HttpServlet {
 		String time = date + " " + req.getParameter("time");
 		String title=req.getParameter("title");
 		
-		System.out.println(country);
+		if(continent.equals("아시아")) {
+			continent = "Asia";
+		}else if(continent.equals("유럽")) {
+			continent = "Europe";
+		}else if(continent.equals("아메리카")) {
+			continent = "America";
+		}else if(continent.equals("아프리카")) {
+			continent = "Africa";
+		}else if(continent.equals("중동")) {
+			continent = "Middle East";
+		}
 		System.out.println(continent);
-		
-		 System.out.println(time);
 		Map<String, Object> board = new LinkedHashMap<>();
 		board.put("writer" , nick);
 		board.put("body", body);

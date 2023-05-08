@@ -83,7 +83,7 @@
 					</div>
 					<div class="block-row" style="flex: 1">
 						<select name="continent" style="flex: 1; text-align: center">
-							<c:forTokens items="아시아, 유럽, 아메리카, 아프리카, 중동" delims="," var="one">
+							<c:forTokens items="아시아,유럽,아메리카,아프리카,중동" delims="," var="one">
 								<option value="${one }">${one }</option>
 							</c:forTokens>
 						</select>
