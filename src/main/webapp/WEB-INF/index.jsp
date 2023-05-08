@@ -30,7 +30,7 @@ body {
 		<c:choose>
 			<c:when test="${sessionScope.logon }">
 				<div style="font-size: 30px;">
-					<b>제목영역입니다</b>
+					<b>해외여행 국가경보</b>
 				</div>
 				<div style="margin-right: 30px; padding-top:4px;">
 					<b>${logonUser.nick }</b>

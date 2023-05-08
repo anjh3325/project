@@ -1,6 +1,7 @@
 package controller;
 
 import java.io.IOException;
+import java.net.URLEncoder;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
@@ -39,16 +40,17 @@ public class boardWriteTaskController extends HttpServlet {
 		board.put("body", body);
 		board.put("totalUsers", totalUsers);
 		board.put("time", time);
+		board.put("continent", continent);
 		board.put("title", title);
 		
 		
 		int r = BoardsDAO.createBoard(board);
 
 		if (r == 1) {
-			resp.sendRedirect("/cautionDetail?country=" + country);
+			resp.sendRedirect("/cautionDetailBoard?countryNm=" + URLEncoder.encode(country, "utf-8"));
 		} else {
 			req.getRequestDispatcher(
-					"/WEB-INF/views/moim/boardWrite.jsp?continent=" + continent + "&country=" + country + "&error=-1")
+					"/WEB-INF/views/moim/boardWrite.jsp?continent=" + URLEncoder.encode(continent, "utf-8") + "&country=" + URLEncoder.encode(country, "utf-8") + "&error=-1")
 					.forward(req, resp);
 		}
 	}

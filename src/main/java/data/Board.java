@@ -1,5 +1,7 @@
 package data;
 
+import java.util.Date;
+
 public class Board {
 
 	int id;
