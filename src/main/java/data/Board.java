@@ -1,6 +1,4 @@
-package data;
-
-import java.util.Date;
+	package data;
 
 public class Board {
 
@@ -13,7 +11,7 @@ public class Board {
 	int currentUsers;
 
 	String time;
-	String continent;
+	String continent;   
 
 	public String getTitle() {
 		return title;

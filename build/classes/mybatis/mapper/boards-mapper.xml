@@ -7,7 +7,8 @@
 		SELECT * FROM (SELECT * FROM BOARDS WHERE continent = #{continent }) ORDER by TIME - SYSDATE
 	</select>
 	<insert id="createBoard" parameterType="hashmap">
-		insert into boards values (boards_SEQ.NEXTVAL, #{writer }, #{body }, #{totalUsers }, TO_DATE(#{time }, 'YYYY-MM-DD HH24:MI'), #{continent }, #{title})
+		insert into boards values (boards_SEQ.NEXTVAL, #{writer }, #{body }, #{totalUsers }, TO_DATE(#{time }, 'YYYY-MM-DD HH24:MI'), #{continent}, #{title})
+		
 	</insert>
 	<select id="findByTargetBoard" resultType="data.Board">
 		SELECT * FROM BOARDS WHERE ID = #{boardId }
