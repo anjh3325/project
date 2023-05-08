@@ -1,4 +1,4 @@
-package data;
+	package data;
 
 import java.util.Date;
 
@@ -12,8 +12,8 @@ public class Board {
 	int totalUsers;
 	int currentUsers;
 
-	Date time;
-	String continent;
+	String time;
+	String continent;   
 
 	public String getTitle() {
 		return title;
@@ -71,11 +71,11 @@ public class Board {
 		this.totalUsers = totalUsers;
 	}
 
-	public Date getTime() {
+	public String getTime() {
 		return time;
 	}
 
-	public void setTime(Date time) {
+	public void setTime(String time) {
 		this.time = time;
 	}
 

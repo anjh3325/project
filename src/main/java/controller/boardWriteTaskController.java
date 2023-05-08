@@ -27,12 +27,13 @@ public class boardWriteTaskController extends HttpServlet {
 		String continent = req.getParameter("continent");
 		String country = req.getParameter("country");
 		String body = req.getParameter("body");
-		int totalUsers = Integer.parseInt(req.getParameter("totalUsers"));
+		String totalUsers = req.getParameter("totalUsers");
 		String date = req.getParameter("date");
 		String time = date + " " + req.getParameter("time");
 		String title=req.getParameter("title");
 		
-	
+		System.out.println(country);
+		System.out.println(continent);
 		
 		 System.out.println(time);
 		Map<String, Object> board = new LinkedHashMap<>();
@@ -45,7 +46,7 @@ public class boardWriteTaskController extends HttpServlet {
 		
 		
 		int r = BoardsDAO.createBoard(board);
-
+		System.out.println(r);
 		if (r == 1) {
 			resp.sendRedirect("/cautionDetailBoard?countryNm=" + URLEncoder.encode(country, "utf-8"));
 		} else {

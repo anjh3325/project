@@ -35,6 +35,7 @@ form {
 		margin: 5px;
 		background-color: #ffffff;
 		box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
+		
 	}
 	
 	input[type="date"], input[type="time"] {

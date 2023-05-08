@@ -26,13 +26,14 @@ public class BoardsDAO extends DAO {
 			session.close();
 		}
 	}
+
 	public static Board findByTargetBoard(int boardId) {
 		SqlSession session = factory.openSession();
 		try {
 			return session.selectOne("boards.findByTargetBoard", boardId);
-		}finally {
+		} finally {
 			session.close();
 		}
-		
+
 	}
 }

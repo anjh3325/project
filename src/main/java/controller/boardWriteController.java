@@ -14,11 +14,11 @@ public class boardWriteController extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		HttpSession session = req.getSession();
+		//HttpSession session = req.getSession();
 		System.out.println("!");
 		String continent = req.getParameter("continent"); //대륙값
 		String country = req.getParameter("country");
-
+		System.out.println(country);
 		req.setAttribute("continent", continent);
 		req.setAttribute("country", country);
 		

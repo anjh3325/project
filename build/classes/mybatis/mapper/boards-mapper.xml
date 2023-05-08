@@ -6,6 +6,7 @@
 	<select id="findByBoard" resultType="data.Board" parameterType="String">
 		SELECT * FROM (SELECT * FROM BOARDS WHERE continent = #{continent }) ORDER by TIME - SYSDATE
 	</select>
+
 	<insert id="createBoard" parameterType="Hashmap">
 		insert into boards values (boards_SEQ.NEXTVAL, #{writer }, #{body }, #{totalUsers }, TO_DATE(#{time }, 'YYYY-MM-DD HH24:MI'), #{continent}, #{title})
 	</insert>

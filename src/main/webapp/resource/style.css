@@ -6,10 +6,17 @@
     font-style: normal;
 }
 
-
+.title-back{
+	background-color: white;
+	width: 200px;
+	height: 140px;
+	font-size: 30px;
+	font-weight: bold;
+	text-align: center;
+}
 
 a{
 	font-family: 'GmarketSansMedium';
 	text-decoration: none;
-	color: #4682B4;
+	color: white;
 }
