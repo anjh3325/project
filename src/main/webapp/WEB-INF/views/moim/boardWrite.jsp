@@ -58,7 +58,7 @@ form {
 </head>
 <body>
 <div align="left">
-  <p style="font-size: 24px; font-weight: bold;">카페글쓰기</p>
+  <p style="font-size: 24px; font-weight: bold;">글쓰기</p>
 </div>
             
 	<div align="center">
