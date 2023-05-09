@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import data.User;
 import repository.BoardsDAO;
 
 @WebServlet("/board/write-task")
@@ -20,10 +21,11 @@ public class boardWriteTaskController extends HttpServlet {
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		HttpSession session = req.getSession();
-		//User user = (User) session.getAttribute("logonUser");
-		//user.getNick()
+		User user = (User) session.getAttribute("logonUser");
+		//user.getNick();
 		
-		String nick = "철이";
+		String nick = user.getNick();
+
 		String continent = req.getParameter("continent");
 		String country = req.getParameter("country");
 		String body = req.getParameter("body");

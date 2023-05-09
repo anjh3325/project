@@ -6,6 +6,11 @@
 <head>
 <meta charset="UTF-8">
 <title></title>
+<link
+    href="https://cdn.jsdelivr.net/gh/hung1001/font-awesome-pro-v6@44659d9/css/all.min.css"
+    rel="stylesheet" type="text/css" />
+<link rel="stylesheet"
+    href="https://cdn.jsdelivr.net/gh/hung1001/font-awesome-pro@4cac1a6/css/all.css" />
 <style type="text/css">
 @font-face {
     font-family: 'GmarketSansMedium';
@@ -39,9 +44,11 @@
 <div class="search-container">
   <h1>검색 결과</h1>
   <div>
+  	<form action="/search">
     <input type="text" name="countryNm" class="searchBox" id="q" list="qlist" autocomplete="off"> 
     <datalist id="qlist"></datalist>
-    <button type="submit">돋보기</button>
+    <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+    </form>
   </div>
   <div class="search-list">
     <c:forEach items="${findSearch}" var="data">

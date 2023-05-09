@@ -1,6 +1,5 @@
 package repository;
 
-import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -36,7 +35,7 @@ public class BoardsDAO extends DAO {
 			session.close();
 		}
 	}
-
+	
 	public static List<Board> findByBoardsAtoB(Map<String, Object> map) {
 		SqlSession session = factory.openSession();
 		try {

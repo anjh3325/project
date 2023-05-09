@@ -85,7 +85,7 @@ body {
 			<p><a href="/caution?alarmLvl=4"><img src="/resource/image/step4.png"/></a></p>
 		 --%>
 		</div>
-	</div>
+	
 	<script>
 		document.querySelector("#q").onkeyup = function(evt) {
 			const val = evt.target.value;

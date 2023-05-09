@@ -33,32 +33,35 @@ public class CautionDetailBoardController extends HttpServlet {
 		CountryData countryData = CountryAPI.findCountry(country);
 		req.setAttribute("countryData", countryData);
 
+		
 		String continent = countryData.getContinentEngNm();
-		
+
+		List<Board> boardLi = BoardsDAO.findByBoard(continent);
 		int p;
-		
-		if(req.getParameter("page") == null) {
+		if (req.getParameter("page") == null) {
 			p = 1;
 		}else {
 			p = Integer.parseInt(req.getParameter("page"));
 		}
-		List<Board> boardLi = BoardsDAO.findByBoard(continent);
-		// boardLi.size() == 191;
-		
-		
-		
-		int totalPage = boardLi.size() % 10 == 0 ? boardLi.size() / 10 : boardLi.size() / 10 + 1;
 		Map<String, Object> map = new LinkedHashMap<>();
-		//map.put("a", )
+
+		map.put("a", p * 10 - 9);
+		map.put("b", p * 10);
+		map.put("continent", continent);
+		// boardLi.size() == 191;
+		int totalPage = boardLi.size() % 10 == 0 ? boardLi.size() / 10 : boardLi.size() / 10 + 1;
 		
+		List<Board> pageBoardLi = BoardsDAO.findByBoardsAtoB(map);
 		
-		req.setAttribute("boardLi", boardLi);
+		req.setAttribute("totalPage", totalPage);
+		req.setAttribute("boardLi", pageBoardLi);		
+
 		DetailData detailData = DetailAPI.getCountries(country);
 		req.setAttribute("DetailData", detailData);
 
 		req.setAttribute("error", req.getParameter("error"));
 		req.getRequestDispatcher("/WEB-INF/views/caution/cautionBoardDetail.jsp").forward(req, resp);
-		
+
 	}
 
 }
