@@ -19,8 +19,9 @@ public class DeleteBoardController extends HttpServlet{
 		String boardId = req.getParameter("boardId");
 		String countryNm = req.getParameter("countryNm");
 		int r = BoardsDAO.deleteTargetBoard(boardId);
+		
 		if(r == 1) {
-			resp.sendRedirect("/cautionDetailBoard?countryNm=" + URLEncoder.encode(countryNm, "utf-8"));
+		  resp.sendRedirect("/cautionDetailBoard?countryNm=" + URLEncoder.encode(countryNm, "utf-8"));
 		}
 	}
 }

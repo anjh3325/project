@@ -222,8 +222,7 @@ list-style-type: none;
 </div>
         </div>
       
-    </div>
-   
+    </div>  
 </body>
 	<script type="text/javascript">
 	

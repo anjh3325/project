@@ -124,7 +124,9 @@
 	    	<a href="/deleteBoard?boardId=${targetBoard.id }&countryNm=${countryNm }" class="btn">삭제하기</a>
 		</c:when>
     	<c:otherwise>
-    		<a href="/apply?boardId=${targetBoard.id }&entry=${sessionScope.logonUser.id }" class="btn">참가신청</a>
+    	<c:if test="${currentUsers < targetBoard.totalUsers}">
+    		<a href="/apply?countryNm=${countryNm }&boardId=${targetBoard.id }&entry=${sessionScope.logonUser.id }" class="btn">참가신청</a>
+    	</c:if>
     	</c:otherwise>
     </c:choose>
   </div>
