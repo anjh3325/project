@@ -8,11 +8,20 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/index")
-public class IndexController extends HttpServlet{
+import repository.AppliesDAO;
+
+@WebServlet("/apply")
+public class ApplyController extends HttpServlet{
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-	
-		req.getRequestDispatcher("/WEB-INF/index.jsp").forward(req, resp);
+		String boardId = req.getParameter("boardId");
+		String entry = req.getParameter("entry");
+		System.out.println(boardId);
+		System.out.println(entry);
+		int r = AppliesDAO.apply(boardId, entry);
+		
+		if(r == 1) {
+			resp.sendRedirect("/boardDetail?boardId=" + boardId);
+		}
 	}
 }

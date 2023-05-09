@@ -26,11 +26,11 @@ public class CommentsDAO extends DAO {
 			session.close();
 		}
 	}
-
-	public static List<Comment> findByCommentsAtoB(Map<String, Object> map) {
+	
+	public static List<Comment> findByCommentsAtoB(Map<String,Object>map){
 		SqlSession session = factory.openSession(true);
 		try {
-			return session.selectList("comments.findByCommentsAtoB", map);
+			return session.selectList("comments.findByCommentsAtoB", map) ;
 		} finally {
 			session.close();
 		}

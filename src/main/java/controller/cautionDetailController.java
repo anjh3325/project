@@ -72,6 +72,7 @@ public class cautionDetailController extends HttpServlet {
 		// 4. 그 totalPage를 jsp에서 사용 할 수 있게 처리
 		req.setAttribute("totalPage", totalPage);
 
+
 		DetailData detailData = DetailAPI.getCountries(country);
 		req.setAttribute("DetailData", detailData);
 		

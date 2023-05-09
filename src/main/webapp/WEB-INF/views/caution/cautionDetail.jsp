@@ -130,6 +130,26 @@ list-style-type: none;
 </head>
 <body>
   <h1 style="text-align: center;">국가 위험 경보</h1>
+  <c:choose>
+			<c:when test="${sessionScope.logon }">
+				<div style="font-size: 300px">
+					
+				</div>
+				<div align="right" style="padding: 10px 20px;">
+					<a href="/search" style="text-decoration: none;color:blue;">검색하기</a>
+					<a href="/caution?alarmLvl=1" style="text-decoration: none;color:blue;">전체경보</a>
+					<div>
+					<b>${logonUser.nick }</b>
+					<a href="/user/logout">로그아웃</a>
+					</div>				
+				</div>
+				</c:when>
+			<c:otherwise>
+				<div align="right" style="">
+					<a href="/user/login">로그인</a> <a href="/user/join">회원가입</a>
+				</div>
+			</c:otherwise>
+		</c:choose>
 
   <div style="display: flex; align-content: center; align-items: center;justify-content: center; gap:20px ">
     <div style="display: flex; gap:20px;">
@@ -198,7 +218,6 @@ list-style-type: none;
   </c:forEach>
 	<c:forEach begin="1" end="${totalPage}" var="page">
 		<a href="/cautionDetail?countryNm=${country}&page=${page }">${page }</a>
-	
 	</c:forEach>
 </div>
         </div>
