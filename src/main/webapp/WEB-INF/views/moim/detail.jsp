@@ -120,7 +120,7 @@
     <a href="/cautionDetailBoard?countryNm=${countryNm }" id="list" class="btn">목록으로</a>
     <c:choose>
     
-		<c:when test="${sessionScope.logonUser.id eq targetBoard.writer }">		
+		<c:when test="${sessionScope.logonUser.nick eq targetBoard.writer }">		
 	    	<a href="/deleteBoard?boardId=${targetBoard.id }&countryNm=${countryNm }" class="btn">삭제하기</a>
 		</c:when>
     	<c:otherwise>
