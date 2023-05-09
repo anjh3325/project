@@ -7,39 +7,88 @@
 <meta charset="UTF-8">
 <title>국가별 단계표출</title>
 <style>
-div {
-	padding : 4px 0px;
+@font-face {
+    font-family: 'GmarketSansMedium';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
 }
-ul {
-	list-style: none;
+*{
+	font-family: 'GmarketSansMedium';
+	
 }
-
-.left {
-	width: 10%;
-	text-align: center;
+		body {
+			background-color: #8FCFD1;
+			font-family: Arial, sans-serif;
+			margin: 0;
+		}
+		.container {
+			background-color: white;
+			border-radius: 10px;
+			box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+			margin: 30px auto;
+			max-width: 800px;
+			padding: 20px;
+		}
+		.header {
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: space-between;
+			margin-bottom: 20px;
+		}
+		.header img {
+			margin-right: 10px;
+		}
+		.header a img {
+			margin-left: 10px;
+		}
+		table {
+			border-collapse: collapse;
+			width: 100%;
+		}
+		td, th {
+			border: 1px solid #dddddd;
+			padding: 8px;
+			text-align: left;
+			vertical-align: top;
+		}
+		tr:nth-child(even) {
+			background-color: #F6F6F6;
+		}
+		ul {
+			list-style: none;
+			margin: 0;
+			padding-left: 0;
+		}
+		li {
+			margin-bottom: 8px;
+		}
+		li b {
+			font-weight: bold;
+		}
+		.left {
+			padding-right: 8px;
+			text-align: right;
+			vertical-align: top;
+			width: 15%;
+		}
+		.right {
+			width: 85%;
+		}
+		@font-face {
+    font-family: 'GmarketSansMedium';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
 }
-
-.right {
-	width: 90%;
-	text-align: left
+*{
+	font-family: 'GmarketSansMedium';
 }
-
-table {
-	font-family: arial, sans-serif;
-	border-collapse: collapse;
-	width: 100%;
-}
-
-td, th {
-	border: 1px solid #dddddd;
-	text-align: left;
-	padding: 8px;
-}
-
-tr:nth-child(even) {
-	background-color: #dddddd;
-}
-</style>
+		.continent {
+			vertical-align: middle;
+			align : center;
+		}
+	</style>
 </head>
 <body>
 	<div style="width: 700px; float:center; margin: auto">
@@ -51,51 +100,52 @@ tr:nth-child(even) {
 		<div>
 			<table style="width: 100%">
 				<tr>
-					<td class="left">아프리카</td>
+					<td class="continent">아프리카</td>
 					<td class="right">
 						<ul>
 							<c:forEach items="${africa }" var="one">
-								<li><b>${one.countryNm }</b> (${one.remark })</li>
+								<a href="/cautionDetail?countryNm=${one.countryNm }" style="text-decoration: none;color: blue;"><li><b>${one.countryNm }</b> (${one.remark })</li></a>
+
 							</c:forEach>
 						</ul>
 					</td>
 				</tr>
 				<tr>
-					<td class="left">미주</td>
+					<td class="left" style =' vertical-align : middle ' >미주</td>
 					<td class="right">
 						<ul>
 							<c:forEach items="${america }" var="one">
-								<li><b>${one.countryNm }</b> (${one.remark })</li>
+								<a href="/cautionDetail?countryNm=${one.countryNm }" style="text-decoration: none;color: blue;"><li><b>${one.countryNm }</b> (${one.remark })</li></a>
 							</c:forEach>
 						</ul>
 					</td>
 				</tr>
 				<tr>
-					<td class="left">아주</td>
+					<td class="continent">아주</td>
 					<td class="right">
 						<ul>
 							<c:forEach items="${asia }" var="one">
-								<li><b>${one.countryNm }</b> (${one.remark })</li>
+								<a href="/cautionDetail?countryNm=${one.countryNm }" style="text-decoration: none;color: blue;"><li><b>${one.countryNm }</b> (${one.remark })</li></a>
 							</c:forEach>
 						</ul>
 					</td>
 				</tr>
 				<tr>
-					<td class="left">유럽</td>
+					<td class="continent">유럽</td>
 					<td class="right">
 						<ul>
 							<c:forEach items="${euroup }" var="one">
-								<li><b>${one.countryNm }</b> (${one.remark })</li>
+								<a href="/cautionDetail?countryNm=${one.countryNm }" style="text-decoration: none;color: blue;"><li><b>${one.countryNm }</b> (${one.remark })</li></a>
 							</c:forEach>
 						</ul>
 					</td>
 				</tr>
 				<tr>
-					<td class="left">중동</td>
+					<td class="continent">중동</td>
 					<td class="right">
 						<ul>
 							<c:forEach items="${middleEast }" var="one">
-								<li><b>${one.countryNm }</b> (${one.remark })</li>
+								<a href="/cautionDetail?countryNm=${one.countryNm }" style="text-decoration: none;color: blue;"><li><b>${one.countryNm }</b> (${one.remark })</li></a>
 							</c:forEach>
 						</ul>
 					</td>

@@ -8,21 +8,21 @@
 <meta charset="UTF-8">
 <title>게시판</title>
 <style>
-<style>
 
-	body {
-		font-family: 'Helvetica Neue', sans-serif;
-		font-size: 20px;
-	}
+
 	
-	form {
+form {
+		
 		display: flex;
 		flex-direction: column;
 		align-items: center;
-		padding: 100px;
-		background-color: #f0f0f0;
+		 justify-content: center;
+		height:100vh;
+		background-color: #E7F0F3;
+		
 		
 	}
+	
 	
 	label {
 		font-weight:bold;
@@ -31,10 +31,11 @@
 	input, select {
 		border-radius: 5px;
 		border: none;
-		padding: 8px 12px;
+		padding: 8px 14px;
 		margin: 5px;
 		background-color: #ffffff;
 		box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
+		
 	}
 	
 	input[type="date"], input[type="time"] {
@@ -51,22 +52,21 @@
 		cursor: pointer;
 		transition: background-color 0.3s ease;
 	}
-. box {
-
-}
 
 	}
 </style>
 </head>
 <body>
-
-
-
+<div align="left">
+  <p style="font-size: 24px; font-weight: bold;">글쓰기</p>
+</div>
+            
 	<div align="center">
 	
 	
 		<form action="/board/write-task" class="moim-form"
 			autocomplete="off">
+			<input type="hidden" name="country" value="${country }"/>
 			<div class="block">
 				<span>모임 이름</span>
 				
@@ -82,7 +82,7 @@
 					</div>
 					<div class="block-row" style="flex: 1">
 						<select name="continent" style="flex: 1; text-align: center">
-							<c:forTokens items="아시아, 유럽, 아메리카, 아프리카, 중동" delims="," var="one">
+							<c:forTokens items="아시아,유럽,아메리카,아프리카,중동" delims="," var="one">
 								<option value="${one }">${one }</option>
 							</c:forTokens>
 						</select>
@@ -111,14 +111,14 @@
 					
 				</div>
 			</div>
-			<div class="block" >
+			<div class="block" width >
 				<label>내용</label>
-				<input type ="text" name="body"/>
+				<input type="text" name="body"  style="width: 350px; height: 120px;" id="q" list="qlist" autocomplete="off"> 
 				</div>
 			<div class="block">
-				<div align ="right">
+				<div align ="center">
 					<button type="submit" >등록</button>
-				
+					
 				</div>
 			</div>
 		</form>
