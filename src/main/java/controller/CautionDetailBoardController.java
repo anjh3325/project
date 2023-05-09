@@ -1,8 +1,9 @@
 package controller;
 
 import java.io.IOException;
-import java.io.PrintWriter;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -10,14 +11,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.google.gson.Gson;
-
 import data.Board;
-import data.Comment;
 import data.country.CountryData;
 import data.detail.DetailData;
 import repository.BoardsDAO;
-import repository.CommentsDAO;
 import util.CountryAPI;
 import util.DetailAPI;
 
@@ -37,17 +34,32 @@ public class CautionDetailBoardController extends HttpServlet {
 		req.setAttribute("countryData", countryData);
 
 		String continent = countryData.getContinentEngNm();
-		
-		System.out.println(continent);
+
 		List<Board> boardLi = BoardsDAO.findByBoard(continent);
-		req.setAttribute("boardLi", boardLi);
+		int p;
+		if (req.getParameter("page") == null) {
+			p = 1;
+		}else {
+			p = Integer.parseInt(req.getParameter("page"));
+		}
+		Map<String, Object> map = new LinkedHashMap<>();
+		map.put("a", p * 10 - 9);
+		map.put("b", p * 10);
+		map.put("continent", continent);
+		// boardLi.size() == 191;
+		int totalPage = boardLi.size() % 10 == 0 ? boardLi.size() / 10 : boardLi.size() / 10 + 1;
+		
+		List<Board> pageBoardLi = BoardsDAO.findByBoardsAtoB(map);
+		
+		req.setAttribute("totalPage", totalPage);
+		req.setAttribute("boardLi", pageBoardLi);
 		
 		DetailData detailData = DetailAPI.getCountries(country);
 		req.setAttribute("DetailData", detailData);
 
 		req.setAttribute("error", req.getParameter("error"));
 		req.getRequestDispatcher("/WEB-INF/views/caution/cautionBoardDetail.jsp").forward(req, resp);
-		
+
 	}
 
 }

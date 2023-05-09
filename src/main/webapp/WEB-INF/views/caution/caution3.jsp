@@ -65,6 +65,15 @@
 		.right {
 			width: 85%;
 		}
+				@font-face {
+    font-family: 'GmarketSansMedium';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+*{
+	font-family: 'GmarketSansMedium';
+}
 	</style>
 </head>
 <body>
@@ -81,7 +90,7 @@
 					<td class="right">
 						<ul>
 							<c:forEach items="${africa }" var="one">
-								<a href="/cautionDetail?countryNm=${one.countryNm }"><li><b>${one.countryNm }</b> (${one.remark })</li></a>
+								<a href="/cautionDetail?countryNm=${one.countryNm }" style="text-decoration: none;color:red;"><li><b>${one.countryNm }</b> (${one.remark })</li></a>
 							</c:forEach>
 						</ul>
 					</td>
@@ -91,7 +100,7 @@
 					<td class="right">
 						<ul>
 							<c:forEach items="${america }" var="one">
-								<a href="/cautionDetail?countryNm=${one.countryNm }"><li><b>${one.countryNm }</b> (${one.remark })</li></a>
+								<a href="/cautionDetail?countryNm=${one.countryNm }" style="text-decoration: none;color:red;"><li><b>${one.countryNm }</b> (${one.remark })</li></a>
 							</c:forEach>
 						</ul>
 					</td>
@@ -101,7 +110,7 @@
 					<td class="right">
 						<ul>
 							<c:forEach items="${asia }" var="one">
-								<a href="/cautionDetail?countryNm=${one.countryNm }"><li><b>${one.countryNm }</b> (${one.remark })</li></a>
+								<a href="/cautionDetail?countryNm=${one.countryNm }" style="text-decoration: none;color:red;"><li><b>${one.countryNm }</b> (${one.remark })</li></a>
 							</c:forEach>
 						</ul>
 					</td>
@@ -111,7 +120,7 @@
 					<td class="right">
 						<ul>
 							<c:forEach items="${euroup }" var="one">
-								<a href="/cautionDetail?countryNm=${one.countryNm }"><li><b>${one.countryNm }</b> (${one.remark })</li></a>
+								<a href="/cautionDetail?countryNm=${one.countryNm }" style="text-decoration: none;color:red;"><li><b>${one.countryNm }</b> (${one.remark })</li></a>
 							</c:forEach>
 						</ul>
 					</td>
@@ -121,7 +130,7 @@
 					<td class="right">
 						<ul>
 							<c:forEach items="${middleEast }" var="one">
-								<a href="/cautionDetail?countryNm=${one.countryNm }"><li><b>${one.countryNm }</b> (${one.remark })</li></a>
+								<a href="/cautionDetail?countryNm=${one.countryNm }" style="text-decoration: none;color:red;"><li><b>${one.countryNm }</b> (${one.remark })</li></a>
 							</c:forEach>
 						</ul>
 					</td>

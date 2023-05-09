@@ -36,6 +36,13 @@ public class BoardsDAO extends DAO {
 		} finally {
 			session.close();
 		}
-
+	}
+	public static List<Board> findByBoardsAtoB(Map<String, Object> map) {
+		SqlSession session = factory.openSession();
+		try {
+			return session.selectList("boards.findByBoardsAtoB", map);
+		} finally {
+			session.close();
+		}
 	}
 }

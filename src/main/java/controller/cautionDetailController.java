@@ -1,7 +1,9 @@
 package controller;
 
 import java.io.IOException;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -31,7 +33,23 @@ public class cautionDetailController extends HttpServlet {
 		req.setAttribute("countryData", countryData);
 
 		List<Comment> commentLi = CommentsDAO.findCountryComments(country);
-		req.setAttribute("commentLi", commentLi);
+		int p;
+		if(req.getParameter("page")==null) {
+			p=1;
+		}else {
+			p=Integer.parseInt(req.getParameter("page"));
+		}
+		Map<String,Object> map =new LinkedHashMap<>();
+		map.put("a", p*5-4);
+		map.put("b", p*5);
+		map.put("country", country);
+		
+		int totalPage=commentLi.size() % 5==0 ? commentLi.size() /5 :commentLi.size() /5 +1;
+		
+		List<Comment>commentPageLi=CommentsDAO.findByCommentsAtoB(map);
+		
+		req.setAttribute("totalPage", totalPage);
+		req.setAttribute("commentLi", commentPageLi);
 
 		DetailData detailData = DetailAPI.getCountries(country);
 		req.setAttribute("DetailData", detailData);
