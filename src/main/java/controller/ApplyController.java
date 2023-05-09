@@ -16,12 +16,16 @@ public class ApplyController extends HttpServlet{
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String boardId = req.getParameter("boardId");
 		String entry = req.getParameter("entry");
+		String countryNm=req.getParameter("countryNm");
+		
+		
 		System.out.println(boardId);
 		System.out.println(entry);
+		
 		int r = AppliesDAO.apply(boardId, entry);
 		
 		if(r == 1) {
-			resp.sendRedirect("/boardDetail?boardId=" + boardId);
+			resp.sendRedirect("/boardDetail?boardId=" + boardId+"&countryNm="+countryNm);
 		}
 	}
 }

@@ -1,6 +1,7 @@
 package controller;
 
 import java.io.IOException;
+import java.net.URLEncoder;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -18,8 +19,9 @@ public class DeleteBoardController extends HttpServlet{
 		String boardId = req.getParameter("boardId");
 		String countryNm = req.getParameter("countryNm");
 		int r = BoardsDAO.deleteTargetBoard(boardId);
+		
 		if(r == 1) {
-			resp.sendRedirect("/cautionDetail?countryNm=" + countryNm);
+		resp.sendRedirect("/cautionDetailBoard?countryNm=" + URLEncoder.encode(countryNm, "utf-8"));
 		}
 	}
 }

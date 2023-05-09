@@ -224,9 +224,6 @@ list-style-type: none;
       
     </div>
     <div>
-    	<c:forEach begin="1" end="${totalPage }" var="page">
-   			<a href="/cautionDetail?countryNm=${country}&page=${page }">${page }</a>
-    	</c:forEach> 
     </div>
 </body>
 	<script type="text/javascript">
