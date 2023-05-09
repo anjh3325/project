@@ -33,6 +33,7 @@ public class CautionDetailBoardController extends HttpServlet {
 		CountryData countryData = CountryAPI.findCountry(country);
 		req.setAttribute("countryData", countryData);
 
+		
 		String continent = countryData.getContinentEngNm();
 
 		List<Board> boardLi = BoardsDAO.findByBoard(continent);
@@ -54,6 +55,9 @@ public class CautionDetailBoardController extends HttpServlet {
 		req.setAttribute("totalPage", totalPage);
 		req.setAttribute("boardLi", pageBoardLi);
 		
+		
+		
+
 		DetailData detailData = DetailAPI.getCountries(country);
 		req.setAttribute("DetailData", detailData);
 

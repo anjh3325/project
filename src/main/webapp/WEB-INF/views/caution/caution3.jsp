@@ -7,8 +7,18 @@
 <meta charset="UTF-8">
 <title>국가별 단계표출</title>
 <style>
+@font-face {
+    font-family: 'GmarketSansMedium';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+*{
+	font-family: 'GmarketSansMedium';
+	
+}
 		body {
-			background-color: #E7F0F3;
+			background-color: #8FCFD1;
 			font-family: Arial, sans-serif;
 			margin: 0;
 		}
@@ -74,6 +84,10 @@
 *{
 	font-family: 'GmarketSansMedium';
 }
+		.continent {
+			vertical-align: middle;
+			align : center;
+		}
 	</style>
 </head>
 <body>
@@ -86,7 +100,7 @@
 		<div>
 			<table style="width: 100%">
 				<tr>
-					<td class="left">아프리카</td>
+					<td class="continent">아프리카</td>
 					<td class="right">
 						<ul>
 							<c:forEach items="${africa }" var="one">
@@ -96,7 +110,7 @@
 					</td>
 				</tr>
 				<tr>
-					<td class="left">미주</td>
+					<td class="continent">미주</td>
 					<td class="right">
 						<ul>
 							<c:forEach items="${america }" var="one">
@@ -106,7 +120,7 @@
 					</td>
 				</tr>
 				<tr>
-					<td class="left">아주</td>
+					<td class="continent">아주</td>
 					<td class="right">
 						<ul>
 							<c:forEach items="${asia }" var="one">
@@ -116,7 +130,7 @@
 					</td>
 				</tr>
 				<tr>
-					<td class="left">유럽</td>
+					<td class="continent">유럽</td>
 					<td class="right">
 						<ul>
 							<c:forEach items="${euroup }" var="one">
@@ -126,7 +140,7 @@
 					</td>
 				</tr>
 				<tr>
-					<td class="left">중동</td>
+					<td class="continent">중동</td>
 					<td class="right">
 						<ul>
 							<c:forEach items="${middleEast }" var="one">

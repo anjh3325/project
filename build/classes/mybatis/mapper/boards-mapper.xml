@@ -12,7 +12,6 @@
 	<select id="findByTargetBoard" resultType="data.Board">
 		SELECT * FROM BOARDS WHERE ID = #{boardId }
 	</select>
-	
 	<select id="findByBoardsAtoB" resultType="data.Board"
 		parameterType="hashmap">
 		SELECT * FROM (SELECT ROWNUM RN, t.* FROM (SELECT * FROM BOARDS WHERE CONTINENT = #{continent } ORDER BY TIME - SYSDATE)t) WHERE RN BETWEEN #{a} AND #{b}
