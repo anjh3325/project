@@ -14,6 +14,18 @@
 	<div>
 		${targetBoard.id }
 		${targetBoard.time }
+		<c:choose>
+			<c:when test="${sessionScope.logonUser.id eq targetBoard.writer }">				
+				<form action="">
+					<input type="hidden" name="countryNm" value="${countryNm }">
+					<a href="/deleteBoard?bradId=${targetBoard.id }">삭제</a>
+				</form>
+			</c:when>
+			<c:otherwise>
+				<p>신청</p>
+			</c:otherwise>
+		</c:choose>
+		
 	</div>
 </body>
 </html>

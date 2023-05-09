@@ -9,7 +9,7 @@ import data.Comment;
 
 public class CommentsDAO extends DAO{
 	public static List<Comment> findCountryComments(String country) {
-		SqlSession session = factory.openSession(true);
+		SqlSession session = factory.openSession();
 		try {
 			return session.selectList("comments.findCountryComments", country);
 		} finally {
@@ -26,4 +26,16 @@ public class CommentsDAO extends DAO{
 			session.close();
 		}
 	}
+	
+	public static List<Comment> findByCommentsAtoB(Map<String, Object> map) {
+		SqlSession session = factory.openSession(true);
+		try {
+			return session.selectList("comments.findByCommentsAtoB", map) ;
+		} finally {
+			session.close();
+		}
+	}
+	
+	
+	
 }

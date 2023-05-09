@@ -1,8 +1,10 @@
-package controller.ajax;
+package controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -22,7 +24,7 @@ import util.CountryAPI;
 import util.DetailAPI;
 
 @WebServlet("/cautionDetailBoard")
-public class CommentController extends HttpServlet {
+public class CautionDetailBoardController extends HttpServlet {
 
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -36,11 +38,14 @@ public class CommentController extends HttpServlet {
 		CountryData countryData = CountryAPI.findCountry(country);
 		req.setAttribute("countryData", countryData);
 
+		
 		String continent = countryData.getContinentEngNm();
 		
-
+		
 		List<Board> boardLi = BoardsDAO.findByBoard(continent);
 		req.setAttribute("boardLi", boardLi);
+		
+		
 		
 		DetailData detailData = DetailAPI.getCountries(country);
 		req.setAttribute("DetailData", detailData);

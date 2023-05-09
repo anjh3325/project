@@ -16,9 +16,11 @@ public class BoardDetailController extends HttpServlet {
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		int boardId = Integer.parseInt(req.getParameter("boardId"));
+		String countryNm = req.getParameter("countryNm");
 		System.out.println(boardId);
 		Board targetBoard = BoardsDAO.findByTargetBoard(boardId);
-
+		
+		req.setAttribute("countryNm", countryNm);
 		req.setAttribute("targetBoard", targetBoard);
 
 		req.getRequestDispatcher("/WEB-INF/views/moim/detail.jsp").forward(req, resp);
