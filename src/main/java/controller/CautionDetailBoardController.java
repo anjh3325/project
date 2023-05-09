@@ -1,10 +1,7 @@
 package controller;
 
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.LinkedHashMap;
 import java.util.List;
-import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -12,14 +9,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.google.gson.Gson;
-
 import data.Board;
-import data.Comment;
 import data.country.CountryData;
 import data.detail.DetailData;
 import repository.BoardsDAO;
-import repository.CommentsDAO;
 import util.CountryAPI;
 import util.DetailAPI;
 
@@ -41,12 +34,14 @@ public class CautionDetailBoardController extends HttpServlet {
 		
 		String continent = countryData.getContinentEngNm();
 		
+
 		
 		List<Board> boardLi = BoardsDAO.findByBoard(continent);
 		req.setAttribute("boardLi", boardLi);
 		
 		
 		
+
 		DetailData detailData = DetailAPI.getCountries(country);
 		req.setAttribute("DetailData", detailData);
 

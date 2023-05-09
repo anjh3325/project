@@ -95,7 +95,6 @@
         <span class="item-content">${DetailData.climate eq null ? '정보없음' : DetailData.climate}</span>
       </div>
     </div>
-
     <div style="overflow: auto;">
       <div style="float: left; margin-right: 10px;">
         <img src="${countryData.mapUrl}" style="width: 600px; height: 500px;">
@@ -115,6 +114,7 @@
       <div class="writer">${li.writer}</div>
       <div class="body">${li.body}</div>
       <div class="time">${li.time }</div>
+
     </div>
   </c:forEach>
 </div>

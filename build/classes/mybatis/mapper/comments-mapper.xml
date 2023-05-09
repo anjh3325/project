@@ -9,7 +9,7 @@
 	<insert id="createComment" parameterType="hashmap">
 		INSERT INTO COMMENTS(COUNTRY, WRITER, BODY) VALUES(#{country },#{writer },#{body })
 	</insert>
-	<select id="findByCommentsAtoB" parameterType="hashmap" resultType="data.Comment">
+	<select id="findByCommentsAtoB" resultType="data.Comment" parameterType="hashmap">
 		SELECT * FROM (SELECT ROWNUM RN, t.* FROM (SELECT * FROM COMMENTS WHERE COUNTRY= #{country } ORDER BY WRITED DESC)t) WHERE RN BETWEEN #{a } AND #{b }
 	</select>
 </mapper>
