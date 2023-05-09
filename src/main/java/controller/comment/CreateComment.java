@@ -16,7 +16,7 @@ import data.User;
 import repository.CommentsDAO;
 
 @WebServlet("/createComment")
-public class createComment extends HttpServlet {
+public class CreateComment extends HttpServlet {
 	
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

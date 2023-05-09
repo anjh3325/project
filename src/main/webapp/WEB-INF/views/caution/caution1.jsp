@@ -111,7 +111,7 @@
 					</td>
 				</tr>
 				<tr>
-					<td class="left" style =' vertical-align : middle ' >미주</td>
+					<td class="continent" style =' vertical-align : middle ' >미주</td>
 					<td class="right">
 						<ul>
 							<c:forEach items="${america }" var="one">

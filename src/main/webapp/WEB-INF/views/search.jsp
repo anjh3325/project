@@ -58,6 +58,9 @@
       	<span style="display: flex; justify-content: center; font-size: 16px; font-weight: bold"> ${data.countryNm}</span></a>
     </div>
     </c:forEach>
+    <c:if test="${empty findSearch  }">
+    	검색 결과 없음
+    </c:if>
   </div>
 </div>
 

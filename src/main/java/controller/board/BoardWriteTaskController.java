@@ -1,4 +1,4 @@
-package controller;
+package controller.board;
 
 import java.io.IOException;
 import java.net.URLEncoder;
@@ -16,7 +16,7 @@ import data.User;
 import repository.BoardsDAO;
 
 @WebServlet("/board/write-task")
-public class boardWriteTaskController extends HttpServlet {
+public class BoardWriteTaskController extends HttpServlet {
 
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

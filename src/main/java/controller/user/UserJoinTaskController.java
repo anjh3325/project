@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import data.User;
 import repository.UsersDAO;
 
 @WebServlet("/user/join-task")
@@ -27,10 +28,15 @@ public class UserJoinTaskController extends HttpServlet {
 		map.put("pass", pass);
 		map.put("nick", nick);
 		
-		int r = UsersDAO.create(map);
-		
+		User user = UsersDAO.findUser(id);
+		int r = 0;
+		if (user == null) {
+			r = UsersDAO.create(map);
+		}
 		if(r == 1) {
 			resp.sendRedirect("/");
+		}else {
+			resp.sendRedirect("/user/join");
 		}
 	}
 }

@@ -1,4 +1,4 @@
-package controller;
+package controller.search;
 
 import java.io.IOException;
 import java.util.LinkedList;
@@ -20,7 +20,7 @@ public class SearchController extends HttpServlet {
 		req.setCharacterEncoding("utf-8");
 		resp.setContentType("text/search;charset=utf-8");
 		String countryNm = req.getParameter("countryNm");
-		System.out.println(countryNm);
+		
 
 		List<CountryData> li = new LinkedList<>();
 
