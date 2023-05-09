@@ -1,4 +1,4 @@
-package controller;
+package controller.caution;
 
 import java.io.IOException;
 import java.util.LinkedHashMap;
@@ -21,7 +21,7 @@ import util.CountryAPI;
 import util.DetailAPI;
 
 @WebServlet("/cautionDetail")
-public class cautionDetailController extends HttpServlet {
+public class CautionDetailController extends HttpServlet {
 
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

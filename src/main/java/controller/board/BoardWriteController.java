@@ -1,4 +1,4 @@
-package controller;
+package controller.board;
 
 import java.io.IOException;
 
@@ -10,12 +10,12 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 @WebServlet("/board/write")
-public class boardWriteController extends HttpServlet {
+public class BoardWriteController extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		//HttpSession session = req.getSession();
-		System.out.println("!");
+		
 		String continent = req.getParameter("continent"); //대륙값
 		String country = req.getParameter("country");
 		System.out.println(country);
@@ -24,6 +24,7 @@ public class boardWriteController extends HttpServlet {
 		
 		
 		req.getRequestDispatcher("/WEB-INF/views/moim/boardWrite.jsp").forward(req, resp); 
+		
 		
 	}
 }
