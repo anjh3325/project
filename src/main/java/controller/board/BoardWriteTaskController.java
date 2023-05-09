@@ -45,7 +45,7 @@ public class BoardWriteTaskController extends HttpServlet {
 		}else if(continent.equals("중동")) {
 			continent = "Middle East";
 		}
-		System.out.println(continent);
+		
 		Map<String, Object> board = new LinkedHashMap<>();
 		board.put("writer" , nick);
 		board.put("body", body);
@@ -56,7 +56,7 @@ public class BoardWriteTaskController extends HttpServlet {
 		
 		
 		int r = BoardsDAO.createBoard(board);
-		System.out.println(r);
+		
 		if (r == 1) {
 			resp.sendRedirect("/cautionDetailBoard?countryNm=" + URLEncoder.encode(country, "utf-8"));
 		} else {

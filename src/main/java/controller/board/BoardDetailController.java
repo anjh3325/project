@@ -7,8 +7,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import data.Board;
+import data.User;
 import repository.AppliesDAO;
 import repository.BoardsDAO;
 
@@ -22,11 +24,18 @@ public class BoardDetailController extends HttpServlet {
 
 		int r = AppliesDAO.applicantCnt(boardId + "");
 		req.setAttribute("currentUsers", r);
-		
+
 		Board targetBoard = BoardsDAO.findByTargetBoard(boardId);
 		req.setAttribute("targetBoard", targetBoard);
-		
+
+		HttpSession session = req.getSession();
+		User user = (User) session.getAttribute("logonUser");
+		String entry = user.getNick();
+
+		if (AppliesDAO.findByApply(boardId + "", entry) != 0) {
+			req.setAttribute("complete", 5);
+		}
+
 		req.getRequestDispatcher("/WEB-INF/views/moim/detail.jsp").forward(req, resp);
 	}
-
 }
