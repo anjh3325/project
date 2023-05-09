@@ -49,7 +49,7 @@ public class CautionDetailBoardController extends HttpServlet {
 		
 		int totalPage = boardLi.size() % 10 == 0 ? boardLi.size() / 10 : boardLi.size() / 10 + 1;
 		Map<String, Object> map = new LinkedHashMap<>();
-		map.put("a", )
+		//map.put("a", )
 		
 		
 		req.setAttribute("boardLi", boardLi);
