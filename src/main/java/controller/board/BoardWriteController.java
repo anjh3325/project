@@ -18,7 +18,7 @@ public class BoardWriteController extends HttpServlet {
 		
 		String continent = req.getParameter("continent"); //대륙값
 		String country = req.getParameter("country");
-		System.out.println(country);
+		
 		req.setAttribute("continent", continent);
 		req.setAttribute("country", country);
 		

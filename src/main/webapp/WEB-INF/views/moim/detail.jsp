@@ -83,6 +83,19 @@
   background-color: #3e8e41;
 }
 
+.complete {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: blue;
+  color: white;
+  text-align: center;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  text-decoration: none;
+}
 
 
 </style>
@@ -124,9 +137,12 @@
 	    	<a href="/deleteBoard?boardId=${targetBoard.id }&countryNm=${countryNm }" class="btn">삭제하기</a>
 		</c:when>
     	<c:otherwise>
-    	<c:if test="${currentUsers < targetBoard.totalUsers}">
-    		<a href="/apply?countryNm=${countryNm }&boardId=${targetBoard.id }&entry=${sessionScope.logonUser.id }" class="btn">참가신청</a>
-    	</c:if>
+    		<c:if test="${currentUsers < targetBoard.totalUsers && complete eq null}">
+    			<a href="/apply?countryNm=${countryNm }&boardId=${targetBoard.id }&entry=${sessionScope.logonUser.id }" class="btn">참가신청</a>
+    		</c:if>
+    		<c:if test="${complete ne null}">
+    			<p class="complete">참가완료</p>
+    		</c:if>
     	</c:otherwise>
     </c:choose>
   </div>

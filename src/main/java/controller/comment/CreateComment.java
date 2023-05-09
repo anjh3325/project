@@ -17,33 +17,31 @@ import repository.CommentsDAO;
 
 @WebServlet("/createComment")
 public class CreateComment extends HttpServlet {
-	
+
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		HttpSession session = req.getSession();
-		User user = (User)session.getAttribute("logonUser");
-	
+		User user = (User) session.getAttribute("logonUser");
+
 		String nick = user.getNick();
-		//nick = "철이";
+		// nick = "철이";
 		String country = req.getParameter("country");
 		String body = req.getParameter("body");
-		
-		
+
 		Map<String, Object> map = new HashMap<>();
-		
+
 		map.put("country", country);
 		map.put("writer", nick);
 		map.put("body", body);
-		
+
 		int r = CommentsDAO.createComment(map);
 		country = URLEncoder.encode(country, "utf-8");
-		System.out.println(country);
-		
-		if(r == 1) {
+
+		if (r == 1) {
 			resp.sendRedirect("/cautionDetail?countryNm=" + country);
-		}else {
+		} else {
 			resp.sendRedirect("/cautionDetail?countryNm=" + country + "&error=2");
 		}
-		
+
 	}
 }

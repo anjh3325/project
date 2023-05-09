@@ -21,7 +21,7 @@ public class CautionController extends HttpServlet {
 		String alarmLvl = req.getParameter("alarmLvl");
 
 		CountryData[] countryLi = CountryAPI.getCountries().getData();
-		System.out.println(countryLi[0].getAlarmLvl().equals("1"));
+		
 
 		List<CountryData> africa = new LinkedList<>();
 		List<CountryData> america = new LinkedList<>();
@@ -50,7 +50,7 @@ public class CautionController extends HttpServlet {
 				}
 			}
 		}
-		System.out.println(africa.size());
+		
 		req.setAttribute("africa", africa);
 		req.setAttribute("america", america);
 		req.setAttribute("asia", asia);

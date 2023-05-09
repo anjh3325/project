@@ -20,7 +20,6 @@ public class SearchController extends HttpServlet {
 		req.setCharacterEncoding("utf-8");
 		resp.setContentType("text/search;charset=utf-8");
 		String countryNm = req.getParameter("countryNm");
-		
 
 		List<CountryData> li = new LinkedList<>();
 

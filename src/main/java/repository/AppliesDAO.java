@@ -27,5 +27,17 @@ public class AppliesDAO extends DAO{
 		}
 	}
 	
+	public static int findByApply (String boardId, String entry) {
+		SqlSession session = factory.openSession();
+		try {
+			Map<String, Object> map = new LinkedHashMap<>();
+			map.put("boardId", boardId);
+			map.put("entry", entry);
+			return session.selectOne("applies.findByApply", map);
+		} finally {
+			session.close();
+		}
+		
+	}
 	
 }
