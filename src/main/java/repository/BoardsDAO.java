@@ -44,5 +44,16 @@ public class BoardsDAO extends DAO {
 			session.close();
 		}
 	}
-
+	public static int deleteTargetBoard(String boardId) {
+		SqlSession session = factory.openSession();
+		try {
+			return session.delete("boards.deleteTargetBoard", boardId);
+		} finally {
+			session.commit();
+			session.close();
+		}
+		
+		
+		
+	}
 }

@@ -44,6 +44,7 @@ public class CautionDetailBoardController extends HttpServlet {
 			p = Integer.parseInt(req.getParameter("page"));
 		}
 		Map<String, Object> map = new LinkedHashMap<>();
+
 		map.put("a", p * 10 - 9);
 		map.put("b", p * 10);
 		map.put("continent", continent);
@@ -53,10 +54,7 @@ public class CautionDetailBoardController extends HttpServlet {
 		List<Board> pageBoardLi = BoardsDAO.findByBoardsAtoB(map);
 		
 		req.setAttribute("totalPage", totalPage);
-		req.setAttribute("boardLi", pageBoardLi);
-		
-		
-		
+		req.setAttribute("boardLi", pageBoardLi);		
 
 		DetailData detailData = DetailAPI.getCountries(country);
 		req.setAttribute("DetailData", detailData);
