@@ -1,6 +1,5 @@
 package repository;
 
-import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -10,7 +9,7 @@ import data.Comment;
 
 public class CommentsDAO extends DAO {
 	public static List<Comment> findCountryComments(String country) {
-		SqlSession session = factory.openSession(true);
+		SqlSession session = factory.openSession();
 		try {
 			return session.selectList("comments.findCountryComments", country);
 		} finally {

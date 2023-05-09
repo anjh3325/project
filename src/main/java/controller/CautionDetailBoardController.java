@@ -1,9 +1,7 @@
 package controller;
 
 import java.io.IOException;
-import java.util.LinkedHashMap;
 import java.util.List;
-import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -33,26 +31,17 @@ public class CautionDetailBoardController extends HttpServlet {
 		CountryData countryData = CountryAPI.findCountry(country);
 		req.setAttribute("countryData", countryData);
 
+		
 		String continent = countryData.getContinentEngNm();
 		
-		int p;
+
 		
-		if(req.getParameter("page") == null) {
-			p = 1;
-		}else {
-			p = Integer.parseInt(req.getParameter("page"));
-		}
 		List<Board> boardLi = BoardsDAO.findByBoard(continent);
-		// boardLi.size() == 191;
-		
-		
-		
-		int totalPage = boardLi.size() % 10 == 0 ? boardLi.size() / 10 : boardLi.size() / 10 + 1;
-		Map<String, Object> map = new LinkedHashMap<>();
-		map.put("a", )
-		
-		
 		req.setAttribute("boardLi", boardLi);
+		
+		
+		
+
 		DetailData detailData = DetailAPI.getCountries(country);
 		req.setAttribute("DetailData", detailData);
 
