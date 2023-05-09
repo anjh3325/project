@@ -11,6 +11,7 @@ public class Board {
 	int currentUsers;
 
 	String time;
+
 	String continent;   
 
 	public String getTitle() {
