@@ -133,7 +133,7 @@
 					<td class="continent">유럽</td>
 					<td class="right">
 						<ul>
-							<c:forEach items="${euroup }" var="one">
+							<c:forEach items="${europe }" var="one">
 								<a href="/cautionDetail?countryNm=${one.countryNm }" style="text-decoration: none;color:red;"><li><b>${one.countryNm }</b> (${one.remark })</li></a>
 							</c:forEach>
 						</ul>
