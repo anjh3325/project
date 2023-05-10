@@ -28,6 +28,8 @@ public class BoardWriteTaskController extends HttpServlet {
 				resp.sendRedirect("/");
 				return;
 			}
+
+			
 			
 			
 			HttpSession session = req.getSession();
