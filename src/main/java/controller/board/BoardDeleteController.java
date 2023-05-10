@@ -12,16 +12,20 @@ import javax.servlet.http.HttpServletResponse;
 import repository.BoardsDAO;
 
 @WebServlet("/deleteBoard")
-public class BoardDeleteController extends HttpServlet{
-	
+public class BoardDeleteController extends HttpServlet {
+
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		String boardId = req.getParameter("boardId");
-		String countryNm = req.getParameter("countryNm");
-		int r = BoardsDAO.deleteTargetBoard(boardId);
-		
-		if(r == 1) {
-		  resp.sendRedirect("/cautionDetailBoard?countryNm=" + URLEncoder.encode(countryNm, "utf-8"));
+		if (req.getParameter("boardId") != null || req.getParameter("countryNm") != null) {
+			String boardId = req.getParameter("boardId");
+			String countryNm = req.getParameter("countryNm");
+			int r = BoardsDAO.deleteTargetBoard(boardId);
+
+			if (r == 1) {
+				resp.sendRedirect("/cautionDetailBoard?countryNm=" + URLEncoder.encode(countryNm, "utf-8"));
+			}
+		}else {
+			resp.sendRedirect("/");
 		}
 	}
 }

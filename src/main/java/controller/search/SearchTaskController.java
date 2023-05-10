@@ -10,13 +10,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 @WebServlet("/search-task")
-public class SearchTaskController extends HttpServlet{
-	
+public class SearchTaskController extends HttpServlet {
+
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		String countryNm = req.getParameter("countryNm");
+		if (req.getParameter("countryNm") != null) {
+			String countryNm = req.getParameter("countryNm");
 
-		
-		resp.sendRedirect("/cautionDetail?CountryNm=" + URLEncoder.encode(countryNm, "UTF-8"));
+			resp.sendRedirect("/cautionDetail?CountryNm=" + URLEncoder.encode(countryNm, "UTF-8"));
+		}else {
+			resp.sendRedirect("/");
+		}
 	}
 }

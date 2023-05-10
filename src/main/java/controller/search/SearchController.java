@@ -17,20 +17,26 @@ import util.CountryAPI;
 public class SearchController extends HttpServlet {
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		req.setCharacterEncoding("utf-8");
-		resp.setContentType("text/search;charset=utf-8");
-		String countryNm = req.getParameter("countryNm");
+		if (req.getParameter("countryNm") != null) {
+			req.setCharacterEncoding("utf-8");
+			resp.setContentType("text/search;charset=utf-8");
+			String countryNm = req.getParameter("countryNm");
 
-		List<CountryData> li = new LinkedList<>();
+			List<CountryData> li = new LinkedList<>();
 
-		CountryData[] countryLi = CountryAPI.getCountries().getData();
-		for (CountryData i : countryLi) {
-			if (i.getCountryNm().matches("(.+)?" + countryNm + "(.+)?")) {
-				li.add(i);
+			CountryData[] countryLi = CountryAPI.getCountries().getData();
+			for (CountryData i : countryLi) {
+				if (i.getAlarmLvl() != null) {
+					if (i.getCountryNm().matches("(.+)?" + countryNm + "(.+)?")) {
+						li.add(i);
+					}
+				}
 			}
-		}
 
-		req.setAttribute("findSearch", li);
-		req.getRequestDispatcher("/WEB-INF/views/search.jsp").forward(req, resp);
+			req.setAttribute("findSearch", li);
+			req.getRequestDispatcher("/WEB-INF/views/search.jsp").forward(req, resp);
+		} else {
+			resp.sendRedirect("/index");
+		}
 	}
 }

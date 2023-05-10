@@ -84,9 +84,9 @@
       <img src="${countryData.flagUrl}" style="width: 300px; height: 200px">
       <h2>${countryData.countryNm} (${countryData.countryEngNm}) <br /> 대륙: ${countryData.continentEngNm}</h2> 
 
-      <div class="list-item">
+     <div class="list-item">
         <span class="item-title">면적:</span>
-        <span class="item-content">${DetailData.area}</span>
+        <span class="item-content"><fmt:formatNumber value="${DetailData.area}" pattern="#,###"/>㎢</span>
         <span class="item-desc">${DetailData.areaDesc}</span>
       </div>
 
@@ -100,9 +100,9 @@
         <span class="item-content">${DetailData.establish eq null ? '정보없음' : DetailData.establish}</span>
       </div>
 
-      <div class="list-item">
+     <div class="list-item">
         <span class="item-title">인구:</span>
-        <span class="item-content">${DetailData.population}</span>
+        <span class="item-content"><fmt:formatNumber value="${DetailData.population}" pattern="#,###"/>명</span>
       </div>
 
       <div class="list-item">
@@ -126,19 +126,29 @@
         <div id="commentBox" style="display: block;">
         <a href="/cautionDetail?countryNm=${country}" id="reviewBtn"><button class="detail-button" type="button">여행후기</button></a> 
         <a href="/cautionDetailBoard?countryNm=${country}" id="meetingBtn"><button type="button" class="detail-button">모임</button></a>
-       <a href="/board/write?country=${country }"><button type="button" class="detail-button">글쓰기</button></a>
-      
+       <c:if test="${sessionScope.logonUser ne null}">
+       		<a href="/board/write?country=${country }"><button type="button" class="detail-button">글쓰기</button></a>
+      	</c:if>
+      	<c:if test="${sessionScope.logonUser eq null}">
+       		<a href="/board/write?country=${country }"><button type="button" class="detail-button" disabled="disabled">로그인 필요</button></a>
+      	</c:if>
+      	
      <div class="comment-container" >
-  <c:forEach items="${boardLi}" var="li">
+     <c:if test="${sessionScope.logonUser ne null}">  <c:forEach items="${boardLi}" var="li">
     <div class="comment" onclick="location.href='/boardDetail?boardId=${li.id }&countryNm=${country }'" style="cursor: pointer;">
       <div class="writer">${li.writer}</div>
       <div class="body">${li.body}</div>
       <div class="time">${li.time }</div>
     </div>
   </c:forEach>
+  
 		<c:forEach begin="1" end="${totalPage }" var="page">
 			<a href="/cautionDetailBoard?countryNm=${country }&page=${page }">${page }</a>
 		</c:forEach>
+  </c:if>
+  <c:if test="${sessionScope.logonUser eq null}">
+  	<p>로그인 필요</p>
+  </c:if>
 </div>
 
         </div>

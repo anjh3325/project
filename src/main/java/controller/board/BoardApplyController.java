@@ -15,15 +15,22 @@ import repository.AppliesDAO;
 public class BoardApplyController extends HttpServlet {
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		String boardId = req.getParameter("boardId");
-		String entry = req.getParameter("entry");
-		String countryNm = req.getParameter("countryNm");
-		if (AppliesDAO.findByApply(boardId, entry) == 0) {
-			AppliesDAO.apply(boardId, entry);
-			resp.sendRedirect("/boardDetail?boardId=" + boardId + "&countryNm=" + URLEncoder.encode(countryNm, "utf-8"));
-		} else {
-			req.setAttribute("complete", 5);
-			resp.sendRedirect("/boardDetail?boardId=" + boardId + "&countryNm=" + URLEncoder.encode(countryNm, "utf-8"));
+		if (req.getParameter("boardId") != null || req.getParameter("entry") != null
+				|| req.getParameter("countryNm") != null) {
+			String boardId = req.getParameter("boardId");
+			String entry = req.getParameter("entry");
+			String countryNm = req.getParameter("countryNm");
+			if (AppliesDAO.findByApply(boardId, entry) == 0) {
+				AppliesDAO.apply(boardId, entry);
+				resp.sendRedirect(
+						"/boardDetail?boardId=" + boardId + "&countryNm=" + URLEncoder.encode(countryNm, "utf-8"));
+			} else {
+				req.setAttribute("complete", 5);
+				resp.sendRedirect(
+						"/boardDetail?boardId=" + boardId + "&countryNm=" + URLEncoder.encode(countryNm, "utf-8"));
+			}
+		}else {
+			resp.sendRedirect("/");
 		}
 
 	}

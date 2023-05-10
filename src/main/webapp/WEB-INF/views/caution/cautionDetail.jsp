@@ -160,9 +160,9 @@ list-style-type: none;
       <img src="${countryData.flagUrl}" style="width: 300px; height: 200px">
       <h2>${countryData.countryNm} (${countryData.countryEngNm}) <br /> 대륙: ${countryData.continentEngNm}</h2> 
 
-      <div class="list-item">
+   <div class="list-item">
         <span class="item-title">면적:</span>
-        <span class="item-content">${DetailData.area}</span>
+        <span class="item-content"><fmt:formatNumber value="${DetailData.area}" pattern="#,###"/>㎢</span>
         <span class="item-desc">${DetailData.areaDesc}</span>
       </div>
 
@@ -176,9 +176,9 @@ list-style-type: none;
         <span class="item-content">${DetailData.establish eq null ? '정보없음' : DetailData.establish}</span>
       </div>
 
-      <div class="list-item">
+     <div class="list-item">
         <span class="item-title">인구:</span>
-        <span class="item-content">${DetailData.population}</span>
+        <span class="item-content"><fmt:formatNumber value="${DetailData.population}" pattern="#,###"/>명</span>
       </div>
 
       <div class="list-item">
@@ -205,8 +205,14 @@ list-style-type: none;
         <a href="/cautionDetailBoard?countryNm=${country}" id="meetingBtn"><button type="button" class="detail-button">모임</button></a>
           <form action="/createComment">
             <input type="hidden" name="country" value="${country}"/>
-            <input type="text" placeholder="후기를 적어주세요" name="body" autocomplete="off"/>
-            <button type="submit">등록</button>
+           	<c:if test="${sessionScope.logonUser ne null}">
+            	<input type="text" placeholder="후기를 적어주세요" name="body" autocomplete="off"/>
+            	<button type="submit">등록</button>
+          	</c:if>
+          	<c:if test="${sessionScope.logonUser eq null}">
+            	<input type="text" placeholder="로그인 후 이용가능" name="body" autocomplete="off" disabled="disabled"/>
+            	<button type="submit" disabled="disabled">등록</button>
+          	</c:if>
           </form>
       
      <div class="comment-container">

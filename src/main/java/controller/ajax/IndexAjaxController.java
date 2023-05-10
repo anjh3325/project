@@ -21,24 +21,27 @@ public class IndexAjaxController extends HttpServlet {
 
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		if (req.getParameter("word") != null) {
+			String word = req.getParameter("word");
+			resp.setContentType("text/plain;charset=utf-8");
 
-		String word = req.getParameter("word");
-		resp.setContentType("text/plain;charset=utf-8");
+			List<String> li = new LinkedList<>();
 
-		List<String> li = new LinkedList<>();
+			CountryData[] countryLi = CountryAPI.getCountries().getData();
 
-		CountryData[] countryLi = CountryAPI.getCountries().getData();
-
-		PrintWriter out = resp.getWriter();
-		for (CountryData data : countryLi) {
-			if (data.getCountryNm().contains(word)) {
-				if (!data.getAlarmLvl().equals("0")) {
-					li.add(data.getCountryNm());
+			PrintWriter out = resp.getWriter();
+			for (CountryData data : countryLi) {
+				if (data.getCountryNm().contains(word)) {
+					if (!data.getAlarmLvl().equals("0")) {
+						li.add(data.getCountryNm());
+					}
 				}
 			}
-		}
-		Gson gson = new Gson();
+			Gson gson = new Gson();
 
-		out.println(gson.toJson(li));
+			out.println(gson.toJson(li));
+		}else {
+			resp.sendRedirect("/");
+		}
 	}
 }
