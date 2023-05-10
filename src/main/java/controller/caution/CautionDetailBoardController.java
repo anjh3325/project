@@ -23,45 +23,47 @@ public class CautionDetailBoardController extends HttpServlet {
 
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		resp.setContentType("text/json;charset=utf-8");
+		if (req.getParameter("countryNm") != null) {
+			resp.setContentType("text/json;charset=utf-8");
 
-		req.setCharacterEncoding("utf-8");
-		String country = req.getParameter("countryNm");
-		req.setAttribute("country", country);
-		// System.out.println(country);
+			req.setCharacterEncoding("utf-8");
+			String country = req.getParameter("countryNm");
+			req.setAttribute("country", country);
+			// System.out.println(country);
 
-		CountryData countryData = CountryAPI.findCountry(country);
-		req.setAttribute("countryData", countryData);
+			CountryData countryData = CountryAPI.findCountry(country);
+			req.setAttribute("countryData", countryData);
 
-		
-		String continent = countryData.getContinentEngNm();
+			String continent = countryData.getContinentEngNm();
 
-		List<Board> boardLi = BoardsDAO.findByBoard(continent);
-		int p;
-		if (req.getParameter("page") == null) {
-			p = 1;
+			List<Board> boardLi = BoardsDAO.findByBoard(continent);
+			int p;
+			if (req.getParameter("page") == null) {
+				p = 1;
+			} else {
+				p = Integer.parseInt(req.getParameter("page"));
+			}
+			Map<String, Object> map = new LinkedHashMap<>();
+
+			map.put("a", p * 10 - 9);
+			map.put("b", p * 10);
+			map.put("continent", continent);
+			// boardLi.size() == 191;
+			int totalPage = boardLi.size() % 10 == 0 ? boardLi.size() / 10 : boardLi.size() / 10 + 1;
+
+			List<Board> pageBoardLi = BoardsDAO.findByBoardsAtoB(map);
+
+			req.setAttribute("totalPage", totalPage);
+			req.setAttribute("boardLi", pageBoardLi);
+
+			DetailData detailData = DetailAPI.getCountries(country);
+			req.setAttribute("DetailData", detailData);
+
+			req.setAttribute("error", req.getParameter("error"));
+			req.getRequestDispatcher("/WEB-INF/views/caution/cautionBoardDetail.jsp").forward(req, resp);
+
 		}else {
-			p = Integer.parseInt(req.getParameter("page"));
+			resp.sendRedirect("/");
 		}
-		Map<String, Object> map = new LinkedHashMap<>();
-
-		map.put("a", p * 10 - 9);
-		map.put("b", p * 10);
-		map.put("continent", continent);
-		// boardLi.size() == 191;
-		int totalPage = boardLi.size() % 10 == 0 ? boardLi.size() / 10 : boardLi.size() / 10 + 1;
-		
-		List<Board> pageBoardLi = BoardsDAO.findByBoardsAtoB(map);
-		
-		req.setAttribute("totalPage", totalPage);
-		req.setAttribute("boardLi", pageBoardLi);		
-
-		DetailData detailData = DetailAPI.getCountries(country);
-		req.setAttribute("DetailData", detailData);
-
-		req.setAttribute("error", req.getParameter("error"));
-		req.getRequestDispatcher("/WEB-INF/views/caution/cautionBoardDetail.jsp").forward(req, resp);
-
 	}
-
 }

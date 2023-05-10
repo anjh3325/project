@@ -18,24 +18,28 @@ import repository.BoardsDAO;
 public class BoardDetailController extends HttpServlet {
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		int boardId = Integer.parseInt(req.getParameter("boardId"));
-		String countryNm = req.getParameter("countryNm");
-		req.setAttribute("countryNm", countryNm);
+		if (req.getParameter("boardId") != null || req.getParameter("countryNm") != null) {
+			int boardId = Integer.parseInt(req.getParameter("boardId"));
+			String countryNm = req.getParameter("countryNm");
+			req.setAttribute("countryNm", countryNm);
 
-		int r = AppliesDAO.applicantCnt(boardId + "");
-		req.setAttribute("currentUsers", r);
+			int r = AppliesDAO.applicantCnt(boardId + "");
+			req.setAttribute("currentUsers", r);
 
-		Board targetBoard = BoardsDAO.findByTargetBoard(boardId);
-		req.setAttribute("targetBoard", targetBoard);
+			Board targetBoard = BoardsDAO.findByTargetBoard(boardId);
+			req.setAttribute("targetBoard", targetBoard);
 
-		HttpSession session = req.getSession();
-		User user = (User) session.getAttribute("logonUser");
-		String entry = user.getNick();
+			HttpSession session = req.getSession();
+			User user = (User) session.getAttribute("logonUser");
+			String entry = user.getNick();
 
-		if (AppliesDAO.findByApply(boardId + "", entry) != 0) {
-			req.setAttribute("complete", 5);
+			if (AppliesDAO.findByApply(boardId + "", entry) != 0) {
+				req.setAttribute("complete", 5);
+			}
+
+			req.getRequestDispatcher("/WEB-INF/views/moim/detail.jsp").forward(req, resp);
+		} else {
+			resp.sendRedirect("/");
 		}
-
-		req.getRequestDispatcher("/WEB-INF/views/moim/detail.jsp").forward(req, resp);
 	}
 }

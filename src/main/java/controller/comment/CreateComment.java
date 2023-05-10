@@ -20,28 +20,31 @@ public class CreateComment extends HttpServlet {
 
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		HttpSession session = req.getSession();
-		User user = (User) session.getAttribute("logonUser");
+		if (req.getParameter("country") != null || req.getParameter("body") != null) {
+			HttpSession session = req.getSession();
+			User user = (User) session.getAttribute("logonUser");
 
-		String nick = user.getNick();
-		// nick = "철이";
-		String country = req.getParameter("country");
-		String body = req.getParameter("body");
+			String nick = user.getNick();
+			// nick = "철이";
+			String country = req.getParameter("country");
+			String body = req.getParameter("body");
 
-		Map<String, Object> map = new HashMap<>();
+			Map<String, Object> map = new HashMap<>();
 
-		map.put("country", country);
-		map.put("writer", nick);
-		map.put("body", body);
+			map.put("country", country);
+			map.put("writer", nick);
+			map.put("body", body);
 
-		int r = CommentsDAO.createComment(map);
-		country = URLEncoder.encode(country, "utf-8");
+			int r = CommentsDAO.createComment(map);
+			country = URLEncoder.encode(country, "utf-8");
 
-		if (r == 1) {
-			resp.sendRedirect("/cautionDetail?countryNm=" + country);
+			if (r == 1) {
+				resp.sendRedirect("/cautionDetail?countryNm=" + country);
+			} else {
+				resp.sendRedirect("/cautionDetail?countryNm=" + country + "&error=2");
+			}
 		} else {
-			resp.sendRedirect("/cautionDetail?countryNm=" + country + "&error=2");
+			resp.sendRedirect("/");
 		}
-
 	}
 }

@@ -17,24 +17,27 @@ public class UserLogInTaskController extends HttpServlet {
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		HttpSession session = req.getSession();
+		if (req.getParameter("id") != null || req.getParameter("pass") != null) {
+			HttpSession session = req.getSession();
 
-		String id=req.getParameter("id");
-		String pass=req.getParameter("pass");
-		
-		User user=UsersDAO.findUser(id);
-		
+			String id = req.getParameter("id");
+			String pass = req.getParameter("pass");
 
-		if (user == null) {
-			resp.sendRedirect("/user/login?cause=error1");
-		}else {
-			if (user.getPass().equals(pass)) {
-				session.setAttribute("logon", true);
-				session.setAttribute("logonUser", user);
-				resp.sendRedirect("/");
-			}else {
-				resp.sendRedirect("/user/login?cause=error2");
+			User user = UsersDAO.findUser(id);
+
+			if (user == null) {
+				resp.sendRedirect("/user/login?cause=error1");
+			} else {
+				if (user.getPass().equals(pass)) {
+					session.setAttribute("logon", true);
+					session.setAttribute("logonUser", user);
+					resp.sendRedirect("/");
+				} else {
+					resp.sendRedirect("/user/login?cause=error2");
+				}
 			}
+		}else {
+			resp.sendRedirect("/");
 		}
 	}
 }

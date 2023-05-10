@@ -17,26 +17,30 @@ import repository.UsersDAO;
 public class UserJoinTaskController extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		req.setCharacterEncoding("utf-8");
-		
-		String id=req.getParameter("id");
-		String pass=req.getParameter("pass");
-		String nick=req.getParameter("nick");
-		
-		Map<String,Object> map =new HashMap<>();
-		map.put("id", id);
-		map.put("pass", pass);
-		map.put("nick", nick);
-		
-		User user = UsersDAO.findUser(id);
-		int r = 0;
-		if (user == null) {
-			r = UsersDAO.create(map);
-		}
-		if(r == 1) {
+		if (req.getParameter("id") != null || req.getParameter("pass") != null || req.getParameter("nick") != null) {
+			req.setCharacterEncoding("utf-8");
+			String id = req.getParameter("id");
+			String pass = req.getParameter("pass");
+			String nick = req.getParameter("nick");
+
+			Map<String, Object> map = new HashMap<>();
+			map.put("id", id);
+			map.put("pass", pass);
+			map.put("nick", nick);
+			int r = 0;
+			if (!id.equals("") && !pass.equals("") && !nick.equals("")) {
+				User user = UsersDAO.findUser(id);
+				if (user == null) {
+					r = UsersDAO.create(map);
+				}
+			}
+			if (r == 1) {
+				resp.sendRedirect("/");
+			} else {
+				resp.sendRedirect("/user/join");
+			}
+		} else {
 			resp.sendRedirect("/");
-		}else {
-			resp.sendRedirect("/user/join");
 		}
 	}
 }

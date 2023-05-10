@@ -52,7 +52,7 @@
 			text-align: left;
 			vertical-align: top;
 		}
-		tr:nth-child(even) {
+		tr {
 			background-color: #F6F6F6;
 		}
 		ul {
